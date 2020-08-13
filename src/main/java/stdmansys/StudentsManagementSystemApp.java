@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.HBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -18,7 +17,7 @@ public class StudentsManagementSystemApp extends Application {
     @Override
     public void start(Stage stage){
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("homepage/startpage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("startpage/startpage.fxml"));
             stage.setScene(new Scene(root, WIDTH, HEIGHT));
             stage.show();
         } catch (IOException e) {

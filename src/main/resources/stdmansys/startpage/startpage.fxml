@@ -8,7 +8,7 @@
 <?import javafx.scene.image.Image?>
 
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="stdmansys.homepage.StartPageController">
+      fx:controller="stdmansys.startpage.StartPageController">
     <children>
         <HBox alignment="CENTER_LEFT">
             <children>

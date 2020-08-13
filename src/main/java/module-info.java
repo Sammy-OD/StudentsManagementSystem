@@ -4,6 +4,6 @@ module stdmansys {
 
     opens stdmansys to javafx.fxml;
     exports stdmansys;
-    opens stdmansys.homepage to javafx.fxml;
-    exports stdmansys.homepage;
+    opens stdmansys.startpage to javafx.fxml;
+    exports stdmansys.startpage;
 }

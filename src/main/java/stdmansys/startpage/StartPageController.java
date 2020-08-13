@@ -1,4 +1,4 @@
-package stdmansys.homepage;
+package stdmansys.startpage;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Side;
