@@ -13,7 +13,7 @@ public class StudentsManagementSystemApp extends Application {
 
     @Override
     public void start(Stage stage) {
-        Parent root = Loader.load("startpage/startpage.fxml");
+        Parent root = Loader.load("loginpage/loginpage.fxml");
         stage.setScene(new Scene(root, WIDTH, HEIGHT));
         stage.show();
     }

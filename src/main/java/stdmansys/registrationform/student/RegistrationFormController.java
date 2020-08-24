@@ -1,4 +1,4 @@
-package stdmansys.registrationform;
+package stdmansys.registrationform.student;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -6,13 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.controlsfx.control.CheckComboBox;
 import stdmansys.Loader;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -22,10 +19,6 @@ public class RegistrationFormController implements Initializable {
     private ImageView backIcon;
     @FXML
     private ComboBox departmentComboBox, classComboBox;
-    @FXML
-    private Label departmentLabel, subjectLabel;
-    @FXML
-    private CheckComboBox subjectChkComboBox;
 
     @FXML
     private void handleOnMouseClicked(MouseEvent evt) {

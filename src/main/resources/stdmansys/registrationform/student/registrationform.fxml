@@ -15,22 +15,19 @@
 <?import javafx.scene.control.ScrollPane?>
 
 <?import org.controlsfx.control.CheckComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="stdmansys.registrationform.RegistrationFormController"
+            fx:controller="stdmansys.registrationform.student.RegistrationFormController"
             fitToWidth="true" fitToHeight="true">
     <HBox>
         <children>
-            <VBox HBox.hgrow="NEVER">
+            <VBox alignment="TOP_CENTER" HBox.hgrow="NEVER">
+                <padding><Insets top="10" right="10" left="10" /></padding>
                 <children>
-                    <HBox alignment="CENTER_LEFT" VBox.vgrow="NEVER">
-                        <padding><Insets top="10" bottom="10" left="10" /></padding>
-                        <children>
-                            <ImageView fx:id="backIcon" fitHeight="50.0" fitWidth="50.0" smooth="true"
-                                       preserveRatio="true" cache="true" onMouseClicked="#handleBackIconOnMouseClicked">
-                                <image><Image url="@images/back_icon.png" /></image>
-                            </ImageView>
-                        </children>
-                    </HBox>
+                    <ImageView fx:id="backIcon" fitHeight="50.0" fitWidth="50.0" smooth="true"
+                               preserveRatio="true" cache="true" onMouseClicked="#handleOnMouseClicked">
+                        <image><Image url="@images/back_icon.png" /></image>
+                    </ImageView>
                 </children>
             </VBox>
             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
@@ -47,7 +44,7 @@
                               GridPane.columnIndex="0" GridPane.columnSpan="4">
                             <padding><Insets top="10" bottom="10" /></padding>
                             <children>
-                                <Text text="Registration Form">
+                                <Text text="Student Registration Form">
                                     <font>
                                         <Font name="Arial" size="30"></Font>
                                     </font>
@@ -68,8 +65,8 @@
                                    GridPane.rowIndex="2" GridPane.columnIndex="1"></TextField>
                         <Label text="Date Of Birth"
                                GridPane.rowIndex="2" GridPane.columnIndex="2"></Label>
-                        <TextField fx:id="dateOfBirthTxtFld" prefHeight="35"
-                                   GridPane.rowIndex="2" GridPane.columnIndex="3"></TextField>
+                        <DatePicker fx:id="datePicker" prefWidth="200" prefHeight="35"
+                                    GridPane.rowIndex="2" GridPane.columnIndex="3"></DatePicker>
                         <Label text="Gender"
                                GridPane.rowIndex="3" GridPane.columnIndex="0"></Label>
                         <HBox alignment="CENTER_LEFT" spacing="10" prefHeight="35"
@@ -83,15 +80,15 @@
                         </HBox>
                         <Label text="Class"
                                GridPane.rowIndex="3" GridPane.columnIndex="2"></Label>
-                        <ComboBox fx:id="classComboBox" prefWidth="200" minWidth="150" prefHeight="35"
-                                  GridPane.rowIndex="3" GridPane.columnIndex="3"></ComboBox>
-                        <Label text="Department"
+                        <ComboBox fx:id="classComboBox"  promptText="Select Class" prefWidth="200" onAction="#handleOnAction"
+                                  minWidth="150" prefHeight="35" GridPane.rowIndex="3" GridPane.columnIndex="3"></ComboBox>
+                        <Label fx:id="departmentLabel" text="Department"
                                GridPane.rowIndex="4" GridPane.columnIndex="0"></Label>
-                        <ComboBox fx:id="departmentComboBox" prefWidth="200" minWidth="150" prefHeight="35"
-                                   GridPane.rowIndex="4" GridPane.columnIndex="1"></ComboBox>
-                        <Label text="Subjects"
+                        <ComboBox fx:id="departmentComboBox" promptText="Select Department" prefWidth="200"
+                                  minWidth="150" prefHeight="35" GridPane.rowIndex="4" GridPane.columnIndex="1"></ComboBox>
+                        <Label fx:id="subjectLabel" text="Subjects"
                                GridPane.rowIndex="4" GridPane.columnIndex="2"></Label>
-                        <CheckComboBox fx:id="subChkComboBox" prefWidth="200" minWidth="150" prefHeight="35"
+                        <CheckComboBox fx:id="subjectChkComboBox" prefWidth="200" minWidth="150" prefHeight="35"
                                        GridPane.rowIndex="4" GridPane.columnIndex="3"></CheckComboBox>
                         <Label text="Religion"
                                GridPane.rowIndex="5" GridPane.columnIndex="0"></Label>

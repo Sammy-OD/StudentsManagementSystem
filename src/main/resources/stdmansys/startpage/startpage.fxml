@@ -6,7 +6,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.image.Image?>
-
 <?import javafx.scene.text.Font?>
 
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
@@ -28,9 +27,9 @@
                         </Text>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                <HBox fx:id="userLabelHBox" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                     <children>
-                        <Label fx:id="user" text="UI" alignment="CENTER" onMouseClicked="#handleUserLabelOnMouseClick"
+                        <Label fx:id="userLabel" alignment="CENTER" onMouseClicked="#handleOnMouseClick"
                                prefWidth="40" prefHeight="40">
                             <font>
                                 <Font name="Arial" size="28"></Font>
@@ -38,8 +37,8 @@
                             <contextMenu>
                                 <ContextMenu fx:id="contxtMenuUser">
                                     <items>
-                                        <MenuItem fx:id="changePassword" text="Change Password" />
-                                        <MenuItem fx:id="logout" text="Logout" />
+                                        <MenuItem fx:id="regNewTeacherMenuItem" text="Register New Teacher" onAction="#handleOnAction" />
+                                        <MenuItem fx:id="logoutMenuItem" text="Logout" onAction="#handleOnAction" />
                                     </items>
                                 </ContextMenu>
                             </contextMenu>
@@ -53,17 +52,17 @@
                 <VBox alignment="CENTER" spacing="30" HBox.hgrow="NEVER">
                     <padding><Insets right="10" left="10" top="30" bottom="30" /></padding>
                     <Button fx:id="regStdBtn" text="Register New Student" prefWidth="250" prefHeight="60"
-                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleButtonOnAction"></Button>
+                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction"></Button>
                     <Button fx:id="beginSessionBtn" text="Begin New Session" prefWidth="250" prefHeight="60"
-                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleButtonOnAction"></Button>
+                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction"></Button>
                     <Button fx:id="beginTermBtn" text="Begin New Term" prefWidth="250" prefHeight="60"
-                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleButtonOnAction"></Button>
+                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction"></Button>
                     <Button fx:id="rsltUpBtn" text="Result Upload" prefWidth="250" prefHeight="60"
-                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleButtonOnAction"></Button>
+                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction"></Button>
                     <Button fx:id="viewGrdShtBtn" text="View Grade Sheet" prefWidth="250" prefHeight="60"
-                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleButtonOnAction"></Button>
+                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction"></Button>
                     <Button fx:id="viewStdRepBtn" text="View Student Report" prefWidth="250" prefHeight="60"
-                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleButtonOnAction"></Button>
+                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction"></Button>
                 </VBox>
                 <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                     <padding><Insets right="120" left="120" /></padding>
@@ -73,7 +72,7 @@
                                 <TextField fx:id="searchBox" promptText="Search student with ID"
                                            prefWidth="380" prefHeight="55" minWidth="300"></TextField>
                                 <Button fx:id="searchBtn" prefWidth="55" prefHeight="55"
-                                        minWidth="40" alignment="CENTER" onAction="#handleButtonOnAction">
+                                        minWidth="40" alignment="CENTER" onAction="#handleOnAction">
                                     <graphic>
                                         <ImageView fitHeight="40.0" fitWidth="40.0" smooth="true"
                                                    preserveRatio="true" cache="true">

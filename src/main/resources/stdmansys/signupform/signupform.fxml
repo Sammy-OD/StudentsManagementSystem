@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="stdmansys.signupform.SignUpFormController" alignment="CENTER">
+    <children>
+        <VBox alignment="TOP_CENTER" HBox.hgrow="NEVER">
+            <padding><Insets top="10" right="10" left="10" /></padding>
+            <children>
+                <ImageView fx:id="backIcon" fitHeight="50.0" fitWidth="50.0" smooth="true"
+                           preserveRatio="true" cache="true" onMouseClicked="#handleOnMouseClicked">
+                    <image><Image url="@images/back_icon.png" /></image>
+                </ImageView>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+            <children>
+                <VBox fx:id="i" alignment="CENTER" VBox.vgrow="NEVER" spacing="15"
+                      maxWidth="460" minWidth="460" prefHeight="400" minHeight="400">
+                    <children>
+                        <HBox alignment="CENTER">
+                            <padding><Insets top="10" bottom="10" /></padding>
+                            <children>
+                                <Text text="Sign Up">
+                                    <font>
+                                        <Font name="Arial" size="32"></Font>
+                                    </font>
+                                </Text>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" spacing="10">
+                            <children>
+                                <Label text="Teacher's ID" textAlignment="LEFT" prefWidth="140" prefHeight="35"></Label>
+                                <TextField fx:id="teacherIdTxtFld" prefWidth="200" prefHeight="35"></TextField>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" spacing="10">
+                            <children>
+                                <Label text="Username" textAlignment="LEFT" prefWidth="140" prefHeight="35"></Label>
+                                <TextField fx:id="usernameTxtFld" prefWidth="200" prefHeight="35"></TextField>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" spacing="10">
+                            <children>
+                                <Label text="Password" textAlignment="LEFT" prefWidth="140" prefHeight="35"></Label>
+                                <TextField fx:id="passwordTxtFld" prefWidth="200" prefHeight="35"></TextField>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" spacing="10">
+                            <children>
+                                <Label text="Confirm Password" textAlignment="LEFT" prefWidth="140" prefHeight="35"></Label>
+                                <TextField fx:id="confirmPasswordTxtFld" prefWidth="200" prefHeight="35"></TextField>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Button fx:id="signUpBtn" text="Sign Up" prefWidth="80" prefHeight="35"></Button>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</HBox>
