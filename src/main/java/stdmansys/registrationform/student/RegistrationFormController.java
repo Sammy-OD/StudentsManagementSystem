@@ -5,11 +5,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import stdmansys.Loader;
+import stdmansys.camera.Camera;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,6 +23,11 @@ public class RegistrationFormController implements Initializable {
     private ImageView backIcon;
     @FXML
     private ComboBox departmentComboBox, classComboBox;
+    @FXML
+    private CheckBox maleChkBox, femaleChkBox;
+    @FXML
+    private Button takePicBtn;
+    private String gender;
 
     @FXML
     private void handleOnMouseClicked(MouseEvent evt) {
@@ -38,11 +47,36 @@ public class RegistrationFormController implements Initializable {
                 // Initializes department combo box.
                 String[] department = {"Science", "Social Science", "Arts"};
                 departmentComboBox.setItems(FXCollections.observableArrayList(department));
-            }
-            if(!selectedItem.contentEquals("SS 1") && !selectedItem.contentEquals("SS 2") && !selectedItem.contentEquals("SS 3")){
+            }else{
                 // Removes all items from department combo box.
                 departmentComboBox.getItems().clear();
             }
+        }
+
+        if(evt.getSource() == maleChkBox){
+            if(maleChkBox.isSelected()){
+                gender = "Male";
+                femaleChkBox.setDisable(true);
+            }else{
+                gender = null;
+                femaleChkBox.setDisable(false);
+            }
+
+        }
+
+        if(evt.getSource() == femaleChkBox){
+            if(femaleChkBox.isSelected()){
+                gender = "Female";
+                maleChkBox.setDisable(true);
+            }else{
+                gender = null;
+                maleChkBox.setDisable(false);
+            }
+        }
+
+        if(evt.getSource() == takePicBtn){
+            Camera.launch();
+            Camera.setCameraCaller(this.getClass().getCanonicalName());
         }
     }
 

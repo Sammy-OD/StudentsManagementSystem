@@ -6,6 +6,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.ToggleSwitch?>
 
 <HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       fx:controller="stdmansys.loginpage.LoginPageController" alignment="CENTER">
@@ -22,8 +23,8 @@
                     </Text>
                 </children>
             </HBox>
-            <Label text="Username" GridPane.rowIndex="1" GridPane.columnIndex="0"></Label>
-            <TextField fx:id="usernameTxtFld" prefWidth="260" prefHeight="40"
+            <Label text="Teacher ID" GridPane.rowIndex="1" GridPane.columnIndex="0"></Label>
+            <TextField fx:id="idTxtFld" prefWidth="260" prefHeight="40"
                        minWidth="200" minHeight="30" GridPane.rowIndex="2" GridPane.columnIndex="0"></TextField>
             <HBox alignment="CENTER_LEFT" GridPane.rowIndex="3" GridPane.columnIndex="0">
                 <children>
@@ -39,16 +40,16 @@
                     </HBox>
                 </children>
             </HBox>
-            <TextField fx:id="passwordTxtFld" prefWidth="260" prefHeight="40"
-                       minWidth="200" minHeight="30" GridPane.rowIndex="4" GridPane.columnIndex="0"></TextField>
+            <PasswordField fx:id="passwordTxtFld" prefWidth="260" prefHeight="40"
+                       minWidth="200" minHeight="30" GridPane.rowIndex="4" GridPane.columnIndex="0"></PasswordField>
             <VBox alignment="CENTER" GridPane.rowIndex="5" GridPane.columnIndex="0" spacing="10">
                 <padding><Insets top="5" bottom="5" /></padding>
                 <children>
                     <Button fx:id="loginBtn" text="Login" onAction="#handleOnAction" prefWidth="100" prefHeight="35"></Button>
                     <HBox alignment="CENTER">
                         <children>
-                            <Text text="New User?"></Text>
-                            <Hyperlink fx:id="signUpHyperlink" text="Sign Up" onAction="#handleOnAction"></Hyperlink>
+                            <Text text="Admin"></Text>
+                            <ToggleSwitch fx:id="adminToggleSwitch" onMouseClicked="#handleOnMouseClicked"></ToggleSwitch>
                         </children>
                     </HBox>
                 </children>

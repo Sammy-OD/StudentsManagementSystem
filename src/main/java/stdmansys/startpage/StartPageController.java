@@ -63,8 +63,12 @@ public class StartPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        userLabel.setText(UserProperty.getFirstName().substring(0,1)
-                            + UserProperty.getLastName().substring(0,1));
+        if(!UserProperty.getIsAdmin()){
+            userLabel.setText(UserProperty.getFirstName().substring(0,1)
+                    + UserProperty.getLastName().substring(0,1));
+        }else{
+            userLabel.setText("Ad");
+        }
         // Disables Admin features for non Admin.
         if(!UserProperty.getIsAdmin()){
             regNewTeacherMenuItem.setVisible(false);

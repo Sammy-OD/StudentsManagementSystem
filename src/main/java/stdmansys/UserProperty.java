@@ -18,17 +18,14 @@ public class UserProperty {
      * @param username current user username.
      */
     public static void setProperty(String username) {
-        String query = "SELECT TeacherId, FirstName, LastName, UserType FROM info WHERE Username = ?";
-        try(Connection connection = DatabaseUtil.getDBConnection("user");
+        String query = "SELECT TeacherId, FirstName, LastName FROM info WHERE TeacherId = ?";
+        try(Connection connection = DatabaseUtil.getDBConnection("teacher");
             PreparedStatement preparedStatement = connection.prepareStatement(query)){
             preparedStatement.setString(1, username);
             ResultSet rs = preparedStatement.executeQuery();
             teacherId = rs.getString("TeacherId");
             firstName = rs.getString("FirstName");
             lastName = rs.getString("LastName");
-            if(rs.getString("UserType").contentEquals("Admin")){
-                isAdmin = true;
-            }
         }catch (SQLException e){
             e.printStackTrace();
         }

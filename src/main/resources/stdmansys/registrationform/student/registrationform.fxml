@@ -72,10 +72,8 @@
                         <HBox alignment="CENTER_LEFT" spacing="10" prefHeight="35"
                               GridPane.rowIndex="3" GridPane.columnIndex="1">
                             <children>
-                                <CheckBox fx:id="maleChkBox"></CheckBox>
-                                <Text textAlignment="LEFT" text="Male"></Text>
-                                <CheckBox fx:id="femaleChkBox"></CheckBox>
-                                <Text textAlignment="LEFT" text="Female"></Text>
+                                <CheckBox fx:id="maleChkBox" text="Male" onAction="#handleOnAction"></CheckBox>
+                                <CheckBox fx:id="femaleChkBox" text="Female" onAction="#handleOnAction"></CheckBox>
                             </children>
                         </HBox>
                         <Label text="Class"
@@ -142,7 +140,7 @@
                               GridPane.columnIndex="0" GridPane.columnSpan="4">
                             <padding><Insets top="10" bottom="10" /></padding>
                             <children>
-                                <Button fx:id="takePicBtn" text="Take Picture" prefWidth="100" prefHeight="40"></Button>
+                                <Button fx:id="takePicBtn" text="Take Picture" prefWidth="100" prefHeight="40" onAction="#handleOnAction"></Button>
                                 <Button fx:id="submitBtn" text="Submit" prefWidth="100" prefHeight="40"></Button>
                             </children>
                         </HBox>

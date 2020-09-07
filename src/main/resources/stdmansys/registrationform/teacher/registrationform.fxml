@@ -69,12 +69,9 @@
                         <HBox alignment="CENTER_LEFT" spacing="10" prefHeight="35"
                               GridPane.rowIndex="3" GridPane.columnIndex="1">
                             <children>
-                                <CheckBox fx:id="mrChkBox"></CheckBox>
-                                <Text textAlignment="LEFT" text="Mr"></Text>
-                                <CheckBox fx:id="mrsChkBox"></CheckBox>
-                                <Text textAlignment="LEFT" text="Mrs"></Text>
-                                <CheckBox fx:id="missChkBox"></CheckBox>
-                                <Text textAlignment="LEFT" text="Miss"></Text>
+                                <CheckBox fx:id="mrChkBox" text="Mr" onAction="#handleOnAction"></CheckBox>
+                                <CheckBox fx:id="mrsChkBox" text="Mrs" onAction="#handleOnAction"></CheckBox>
+                                <CheckBox fx:id="missChkBox" text="Miss" onAction="#handleOnAction"></CheckBox>
                             </children>
                         </HBox>
                         <Label text="Phone Number"
@@ -101,8 +98,8 @@
                               GridPane.columnIndex="0" GridPane.columnSpan="4">
                             <padding><Insets top="10" bottom="10" /></padding>
                             <children>
-                                <Button fx:id="takePicBtn" text="Take Picture" prefWidth="100" prefHeight="40"></Button>
-                                <Button fx:id="submitBtn" text="Submit" prefWidth="100" prefHeight="40"></Button>
+                                <Button fx:id="takePicBtn" text="Take Picture" prefWidth="100" prefHeight="40" onAction="#handleOnAction"></Button>
+                                <Button fx:id="submitBtn" text="Submit" prefWidth="100" prefHeight="40" onAction="#handleOnAction"></Button>
                             </children>
                         </HBox>
                     </children>
