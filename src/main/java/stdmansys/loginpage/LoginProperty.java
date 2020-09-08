@@ -20,10 +20,15 @@ public class LoginProperty {
     public LoginProperty(){}
 
     public static boolean verifyTeacherLogin(String username, String password) {
+        DatabaseUtil.decryptDB("teacher");
         String query = "SELECT TeacherId, Password FROM info";
-        try(Connection connection = DatabaseUtil.getDBConnection("teacher");
-        Statement statement = connection.createStatement()){
-            ResultSet rs = statement.executeQuery(query);
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet rs = null;
+        try{
+            connection = DatabaseUtil.getDBConnection("teacher");
+            statement = connection.createStatement();
+            rs = statement.executeQuery(query);
             while(rs.next()){
                 if(username.contentEquals(rs.getString("TeacherId")) &&
                         password.contentEquals(rs.getString("Password"))){
@@ -33,6 +38,15 @@ public class LoginProperty {
             }
         }catch (SQLException e){
             e.printStackTrace();
+        }finally {
+            try{
+                if(rs != null) rs.close();
+                if(statement != null) statement.close();
+                if(connection != null) connection.close();
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+            DatabaseUtil.encryptDB("teacher");
         }
         return isLoginParametersCorrect;
     }

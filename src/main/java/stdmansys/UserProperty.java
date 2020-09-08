@@ -18,16 +18,30 @@ public class UserProperty {
      * @param username current user username.
      */
     public static void setProperty(String username) {
+        DatabaseUtil.decryptDB("teacher");
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
         String query = "SELECT TeacherId, FirstName, LastName FROM info WHERE TeacherId = ?";
-        try(Connection connection = DatabaseUtil.getDBConnection("teacher");
-            PreparedStatement preparedStatement = connection.prepareStatement(query)){
+        try{
+            connection = DatabaseUtil.getDBConnection("teacher");
+            preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
-            ResultSet rs = preparedStatement.executeQuery();
+            rs = preparedStatement.executeQuery();
             teacherId = rs.getString("TeacherId");
             firstName = rs.getString("FirstName");
             lastName = rs.getString("LastName");
         }catch (SQLException e){
             e.printStackTrace();
+        }finally {
+            try{
+                if(rs != null) rs.close();
+                if(preparedStatement != null) preparedStatement.close();
+                if(connection != null) connection.close();
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+            DatabaseUtil.encryptDB("teacher");
         }
     }
 

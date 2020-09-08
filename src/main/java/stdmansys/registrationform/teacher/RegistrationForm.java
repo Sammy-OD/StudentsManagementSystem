@@ -15,10 +15,14 @@ public class RegistrationForm {
     public RegistrationForm(){}
 
     public boolean submitForm(){
+        DatabaseUtil.decryptDB("teacher");
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
         String query = "INSERT INTO info(TeacherId, FirstName, LastName, MiddleName, Title, Religion, Nationality, " +
                             "DOB, Address, Email, PhoneNumber, ImageName) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try(Connection connection = DatabaseUtil.getDBConnection("teacher");
-            PreparedStatement preparedStatement = connection.prepareStatement(query)){
+        try{
+            connection = DatabaseUtil.getDBConnection("teacher");
+            preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, generateTeacherId());
             preparedStatement.setString(2, firstName);
             preparedStatement.setString(3, lastName);
@@ -39,6 +43,14 @@ public class RegistrationForm {
             return true;
         }catch (SQLException e){
             return false;
+        }finally {
+            try{
+                if(preparedStatement != null) preparedStatement.close();
+                if(connection != null) connection.close();
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+            DatabaseUtil.encryptDB("teacher");
         }
     }
 

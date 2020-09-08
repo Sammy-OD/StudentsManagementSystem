@@ -3,9 +3,15 @@ package stdmansys.utils;
 import org.apache.commons.io.FileUtils;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.File;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 
 public class PasswordUtil {
 
@@ -34,9 +40,19 @@ public class PasswordUtil {
 
     public static SecretKey getSecretKey(){
         try{
-            return new SecretKeySpec(FileUtils.readFileToByteArray(new File("doc/sk.txt")), "AES");
-        }catch (Exception e){
-          return null;
+            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+            KeySpec spec = new PBEKeySpec("zkyellow".toCharArray(), FileUtils.readFileToByteArray(new File("doc/salt.txt")), 10000, 128);
+            SecretKey sk = factory.generateSecret(spec);
+            return new SecretKeySpec(sk.getEncoded(), "AES");
+        }catch(NoSuchAlgorithmException e){
+            e.printStackTrace();
+            return null;
+        }catch(InvalidKeySpecException e){
+            e.printStackTrace();
+            return null;
+        }catch(IOException e){
+            e.printStackTrace();
+            return null;
         }
     }
 
