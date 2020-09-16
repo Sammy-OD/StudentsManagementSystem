@@ -59,7 +59,7 @@ public class RegistrationForm {
         if(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() < 10){
             teacherId = "TCH" + SessionProperty.getCurrentSession().substring(0, 4)
                             + "00" + (SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() + 1);
-        }else if (SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() >= 10
+        }else if(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() >= 10
                     && SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() < 100){
             teacherId = "TCH" + SessionProperty.getCurrentSession().substring(0, 4)
                             + "0"+ (SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() + 1);

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
@@ -27,84 +26,88 @@
                     </ImageView>
                 </children>
             </VBox>
-            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                <GridPane alignment="CENTER" hgap="20" vgap="20">
-                    <padding><Insets left="20" right="80" /></padding>
-                    <columnConstraints>
-                        <ColumnConstraints prefWidth="160" minWidth="150"></ColumnConstraints>
-                        <ColumnConstraints prefWidth="200" minWidth="150"></ColumnConstraints>
-                        <ColumnConstraints prefWidth="160" minWidth="150"></ColumnConstraints>
-                        <ColumnConstraints prefWidth="200" minWidth="150"></ColumnConstraints>
-                    </columnConstraints>
-                    <children>
-                        <HBox alignment="CENTER" GridPane.rowIndex="0"
-                              GridPane.columnIndex="0" GridPane.columnSpan="4">
-                            <padding><Insets top="10" bottom="10" /></padding>
-                            <children>
-                                <Text text="Teacher Registration Form">
-                                    <font>
-                                        <Font name="Arial" size="30"></Font>
-                                    </font>
-                                </Text>
-                            </children>
-                        </HBox>
-                        <Label text="First Name"
-                               GridPane.rowIndex="1" GridPane.columnIndex="0"></Label>
-                        <TextField fx:id="firstNameTxtFld" prefHeight="35"
-                                   GridPane.rowIndex="1" GridPane.columnIndex="1"></TextField>
-                        <Label text="Last Name"
-                               GridPane.rowIndex="1" GridPane.columnIndex="2"></Label>
-                        <TextField fx:id="lastNameTxtFld" prefHeight="35"
-                                   GridPane.rowIndex="1" GridPane.columnIndex="3"></TextField>
-                        <Label text="Middle Name"
-                               GridPane.rowIndex="2" GridPane.columnIndex="0"></Label>
-                        <TextField fx:id="midNameTxtFld" prefHeight="35"
-                                   GridPane.rowIndex="2" GridPane.columnIndex="1"></TextField>
-                        <Label text="Date Of Birth"
-                               GridPane.rowIndex="2" GridPane.columnIndex="2"></Label>
-                        <DatePicker fx:id="datePicker" prefWidth="200" prefHeight="35"
-                                   GridPane.rowIndex="2" GridPane.columnIndex="3"></DatePicker>
-                        <Label text="Title"
-                               GridPane.rowIndex="3" GridPane.columnIndex="0"></Label>
-                        <HBox alignment="CENTER_LEFT" spacing="10" prefHeight="35"
-                              GridPane.rowIndex="3" GridPane.columnIndex="1">
-                            <children>
-                                <CheckBox fx:id="mrChkBox" text="Mr" onAction="#handleOnAction"></CheckBox>
-                                <CheckBox fx:id="mrsChkBox" text="Mrs" onAction="#handleOnAction"></CheckBox>
-                                <CheckBox fx:id="missChkBox" text="Miss" onAction="#handleOnAction"></CheckBox>
-                            </children>
-                        </HBox>
-                        <Label text="Phone Number"
-                               GridPane.rowIndex="3" GridPane.columnIndex="2"></Label>
-                        <TextField fx:id="phnNumTxtFld" prefHeight="35"
-                                   GridPane.rowIndex="3" GridPane.columnIndex="3"></TextField>
-                        <Label text="Religion"
-                               GridPane.rowIndex="4" GridPane.columnIndex="0"></Label>
-                        <TextField fx:id="religionTxtFld" prefHeight="35"
-                                   GridPane.rowIndex="4" GridPane.columnIndex="1"></TextField>
-                        <Label text="Nationality"
-                               GridPane.rowIndex="4" GridPane.columnIndex="2"></Label>
-                        <TextField fx:id="nationTxtFld" prefHeight="35"
-                                   GridPane.rowIndex="4" GridPane.columnIndex="3"></TextField>
-                        <Label text="Residential Address"
-                               GridPane.rowIndex="5" GridPane.columnIndex="0"></Label>
-                        <TextField fx:id="addressTxtFld" GridPane.rowIndex="5" prefHeight="35"
-                                   GridPane.columnIndex="1" GridPane.columnSpan="3"></TextField>
-                        <Label text="Email Address"
-                               GridPane.rowIndex="6" GridPane.columnIndex="0"></Label>
-                        <TextField fx:id="emailTxtFld" GridPane.rowIndex="6" prefHeight="35"
-                                   GridPane.columnIndex="1" GridPane.columnSpan="3"></TextField>
-                        <HBox alignment="CENTER_RIGHT" GridPane.rowIndex="7" spacing="15"
-                              GridPane.columnIndex="0" GridPane.columnSpan="4">
-                            <padding><Insets top="10" bottom="10" /></padding>
-                            <children>
-                                <Button fx:id="takePicBtn" text="Take Picture" prefWidth="100" prefHeight="40" onAction="#handleOnAction"></Button>
-                                <Button fx:id="submitBtn" text="Submit" prefWidth="100" prefHeight="40" onAction="#handleOnAction"></Button>
-                            </children>
-                        </HBox>
-                    </children>
-                </GridPane>
-            </VBox>
+            <AnchorPane fx:id="formNode" HBox.hgrow="ALWAYS">
+                <children>
+                    <GridPane alignment="CENTER" hgap="20" vgap="25" AnchorPane.rightAnchor="70" AnchorPane.leftAnchor="0"
+                              AnchorPane.topAnchor="10" AnchorPane.bottomAnchor="10">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="160" minWidth="180" />
+                            <ColumnConstraints prefWidth="200" minWidth="180" />
+                            <ColumnConstraints prefWidth="160" minWidth="180" />
+                            <ColumnConstraints prefWidth="200" minWidth="180" />
+                        </columnConstraints>
+                        <children>
+                            <HBox alignment="CENTER" GridPane.rowIndex="0"
+                                  GridPane.columnIndex="0" GridPane.columnSpan="4">
+                                <padding><Insets top="10" bottom="10" /></padding>
+                                <children>
+                                    <Text text="Teacher Registration Form">
+                                        <font>
+                                            <Font name="Arial" size="30" />
+                                        </font>
+                                    </Text>
+                                </children>
+                            </HBox>
+                            <Label text="First Name"
+                                   GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                            <TextField fx:id="firstNameTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                            <Label text="Last Name"
+                                   GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                            <TextField fx:id="lastNameTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="1" GridPane.columnIndex="3" />
+                            <Label text="Middle Name"
+                                   GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                            <TextField fx:id="midNameTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                            <Label text="Date Of Birth"
+                                   GridPane.rowIndex="2" GridPane.columnIndex="2" />
+                            <DatePicker fx:id="datePicker" prefWidth="200" prefHeight="35" minHeight="35"
+                                        GridPane.rowIndex="2" GridPane.columnIndex="3" />
+                            <Label text="Title"
+                                   GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                            <HBox alignment="CENTER_LEFT" spacing="10" prefHeight="35"
+                                  GridPane.rowIndex="3" GridPane.columnIndex="1">
+                                <children>
+                                    <CheckBox fx:id="mrChkBox" text="Mr" onAction="#handleOnAction" />
+                                    <CheckBox fx:id="mrsChkBox" text="Mrs" onAction="#handleOnAction" />
+                                    <CheckBox fx:id="missChkBox" text="Miss" onAction="#handleOnAction" />
+                                </children>
+                            </HBox>
+                            <Label text="Phone Number"
+                                   GridPane.rowIndex="3" GridPane.columnIndex="2" />
+                            <TextField fx:id="phnNumTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="3" GridPane.columnIndex="3" />
+                            <Label text="Religion"
+                                   GridPane.rowIndex="4" GridPane.columnIndex="0" />
+                            <TextField fx:id="religionTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="4" GridPane.columnIndex="1" />
+                            <Label text="Nationality"
+                                   GridPane.rowIndex="4" GridPane.columnIndex="2" />
+                            <TextField fx:id="nationTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="4" GridPane.columnIndex="3" />
+                            <Label text="Residential Address"
+                                   GridPane.rowIndex="5" GridPane.columnIndex="0" />
+                            <TextField fx:id="addressTxtFld" GridPane.rowIndex="5" prefHeight="35" minHeight="35"
+                                       GridPane.columnIndex="1" GridPane.columnSpan="3" />
+                            <Label text="Email Address"
+                                   GridPane.rowIndex="6" GridPane.columnIndex="0" />
+                            <TextField fx:id="emailTxtFld" GridPane.rowIndex="6" prefHeight="35" minHeight="35"
+                                       GridPane.columnIndex="1" GridPane.columnSpan="3" />
+                            <HBox alignment="CENTER_RIGHT" GridPane.rowIndex="7" spacing="15"
+                                  GridPane.columnIndex="0" GridPane.columnSpan="4">
+                                <padding><Insets top="10" bottom="10" /></padding>
+                                <children>
+                                    <Button fx:id="takePicBtn" text="Take Picture" prefWidth="100" prefHeight="40"
+                                            minHeight="40" onAction="#handleOnAction" />
+                                    <Button fx:id="submitBtn" text="Submit" prefWidth="100" prefHeight="40"
+                                            minHeight="40" onAction="#handleOnAction" />
+                                </children>
+                            </HBox>
+                        </children>
+                    </GridPane>
+                </children>
+            </AnchorPane>
         </children>
     </HBox>
 </ScrollPane>
