@@ -1,17 +1,15 @@
 package stdmansys.utils;
 
-import org.apache.commons.io.FileUtils;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.SecretKeySpec;
-import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
+import java.security.UnrecoverableEntryException;
+import java.security.cert.CertificateException;
 
 public class PasswordUtil {
 
@@ -40,17 +38,24 @@ public class PasswordUtil {
 
     public static SecretKey getSecretKey(){
         try{
-            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-            KeySpec spec = new PBEKeySpec("zkyellow".toCharArray(), FileUtils.readFileToByteArray(new File("doc/salt.txt")), 10000, 128);
-            SecretKey sk = factory.generateSecret(spec);
-            return new SecretKeySpec(sk.getEncoded(), "AES");
-        }catch(NoSuchAlgorithmException e){
+            KeyStore keyStore = KeyStore.getInstance("PKCS12");
+            keyStore.load(new FileInputStream("doc/sk.pfx"), "me.zky".toCharArray());
+            KeyStore.ProtectionParameter entryPassword = new KeyStore.PasswordProtection("me.zky".toCharArray());
+            KeyStore.SecretKeyEntry keyEntry = (KeyStore.SecretKeyEntry) keyStore.getEntry("admin-secret-key", entryPassword);
+            return keyEntry.getSecretKey();
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
-        }catch(InvalidKeySpecException e){
+        } catch (CertificateException e) {
             e.printStackTrace();
             return null;
-        }catch(IOException e){
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+            return null;
+        } catch (UnrecoverableEntryException e) {
             e.printStackTrace();
             return null;
         }
