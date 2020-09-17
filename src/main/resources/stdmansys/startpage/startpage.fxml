@@ -22,7 +22,7 @@
                         </ImageView>
                         <Text text="My Demo School">
                             <font>
-                                <Font name="Arial" size="30"></Font>
+                                <Font name="Arial" size="30" />
                             </font>
                         </Text>
                     </children>
@@ -32,7 +32,7 @@
                         <Label fx:id="userLabel" alignment="CENTER" onMouseClicked="#handleOnMouseClick"
                                prefWidth="40" prefHeight="40">
                             <font>
-                                <Font name="Arial" size="28"></Font>
+                                <Font name="Arial" size="28" />
                             </font>
                             <contextMenu>
                                 <ContextMenu fx:id="contxtMenuUser">
@@ -52,17 +52,17 @@
                 <VBox styleClass="menu" alignment="TOP_CENTER" HBox.hgrow="NEVER">
                     <padding><Insets /></padding>
                     <Button fx:id="regStdBtn" text="Register New Student" prefWidth="250" prefHeight="60"
-                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction"></Button>
+                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction" />
                     <Button fx:id="beginSessionBtn" text="Begin New Session" prefWidth="250" prefHeight="60"
-                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction"></Button>
+                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction" />
                     <Button fx:id="beginTermBtn" text="Begin New Term" prefWidth="250" prefHeight="60"
-                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction"></Button>
+                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction" />
                     <Button fx:id="rsltUpBtn" text="Result Upload" prefWidth="250" prefHeight="60"
-                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction"></Button>
+                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction" />
                     <Button fx:id="viewGrdShtBtn" text="View Grade Sheet" prefWidth="250" prefHeight="60"
-                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction"></Button>
+                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction" />
                     <Button fx:id="viewStdRepBtn" text="View Student Report" prefWidth="250" prefHeight="60"
-                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction"></Button>
+                            minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction" />
                 </VBox>
                 <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                     <padding><Insets right="120" left="120" /></padding>
@@ -70,12 +70,11 @@
                         <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                             <children>
                                 <TextField fx:id="searchBox" promptText="Search student with ID"
-                                           prefWidth="380" prefHeight="55" minWidth="300"></TextField>
+                                           prefWidth="380" prefHeight="55" minWidth="300" />
                                 <Button fx:id="searchBtn" prefWidth="55" prefHeight="55"
                                         minWidth="40" alignment="CENTER" onAction="#handleOnAction">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" fitWidth="40.0" smooth="true"
-                                                   preserveRatio="true" cache="true">
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" preserveRatio="true" cache="true">
                                             <image><Image url="@images/search_icon.png" /></image>
                                         </ImageView>
                                     </graphic>

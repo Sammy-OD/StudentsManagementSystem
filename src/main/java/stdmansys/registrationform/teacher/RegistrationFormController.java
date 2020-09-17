@@ -4,12 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.w3c.dom.Document;
 import stdmansys.Loader;
@@ -17,7 +15,7 @@ import stdmansys.SessionProperty;
 import stdmansys.camera.Camera;
 import stdmansys.utils.XMLUtil;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class RegistrationFormController implements Initializable {
 
@@ -32,6 +30,8 @@ public class RegistrationFormController implements Initializable {
     private DatePicker datePicker;
     @FXML
     private CheckBox mrChkBox, mrsChkBox, missChkBox;
+    @FXML
+    private AnchorPane formNode;
     private RegistrationForm form;
 
     @FXML
@@ -77,7 +77,7 @@ public class RegistrationFormController implements Initializable {
         }
 
         if(evt.getSource() == takePicBtn){
-            form.setRootNode(takePicBtn.getScene().getRoot());
+            RegistrationForm.setRootNode(takePicBtn.getScene().getRoot());
             Camera.initWebcam();
             Camera.launch();
             Camera.setCameraCaller(this.getClass().getCanonicalName());
@@ -88,14 +88,16 @@ public class RegistrationFormController implements Initializable {
             if(form.submitForm()){
                 SessionProperty.setCurrentNumberOfTeachersRegisteredThisSession(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() + 1);
                 Document doc = XMLUtil.loadXML("state");
-                doc.getElementsByTagName("teacher").item(0).setTextContent(Integer.toString(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession()));
-                XMLUtil.updateXML("state", doc);
+                if (doc != null) {
+                    doc.getElementsByTagName("teacher").item(0).setTextContent(Integer.toString(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession()));
+                    XMLUtil.updateXML("state", doc);
+                }
                 Stage stage = (Stage) submitBtn.getScene().getWindow();
                 Parent root = Loader.load("registrationform/teacher/registrationform.fxml");
                 stage.getScene().setRoot(root);
                 stage.show();
             }else{
-
+                // Alert comes here.
             }
         }
     }
@@ -120,7 +122,7 @@ public class RegistrationFormController implements Initializable {
         // Gets date of birth.
         try{
             form.setDOB(datePicker.getValue().toString());
-        }catch (Exception e){}
+        }catch (Exception ignored){}
         // Gets title.
         if(mrChkBox.isSelected()){
             form.setTitle(mrChkBox.getText());
