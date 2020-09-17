@@ -1,0 +1,41 @@
+.root{
+    -fx-font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+#container{
+    -fx-border-width: 2;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, grey, 15, 0.2, 3, 4);
+}
+
+#container Label{
+    -fx-font-size: 14px;
+}
+
+.txtFd{
+    -fx-focus-color: #228B22;
+    -fx-faint-focus-color: #228B2222;
+    -fx-effect: dropshadow(gaussian, grey, 10, 0.1, 0.5, 1);
+    -fx-font-size: 14px;
+}
+
+.linkTxt{
+    -fx-text-fill: #228B22;
+}
+
+#loginBtn{
+    -fx-background-color: #228B22;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, grey, 15, 0.2, 1, 2);
+}
+
+#loginBtn:hover{
+    -fx-background-color: #006400;
+    -fx-cursor: hand;
+}
+
+#adminToggleSwitch:selected .thumb-area {
+    -fx-background-color: #228B22;
+}
+
