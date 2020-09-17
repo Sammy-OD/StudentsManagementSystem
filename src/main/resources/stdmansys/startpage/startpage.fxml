@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="stdmansys.startpage.StartPageController">
+      fx:controller="stdmansys.startpage.StartPageController" stylesheets="@startpage.css">
     <children>
-        <HBox alignment="CENTER_LEFT" VBox.vgrow="NEVER">
+        <HBox styleClass="header" alignment="CENTER_LEFT" VBox.vgrow="NEVER">
             <padding><Insets top="10" bottom="10" right="10" left="10" /></padding>
             <children>
                 <HBox alignment="CENTER_LEFT" spacing="10">
@@ -49,8 +49,8 @@
         </HBox>
         <HBox VBox.vgrow="ALWAYS">
             <children>
-                <VBox alignment="CENTER" spacing="30" HBox.hgrow="NEVER">
-                    <padding><Insets right="10" left="10" top="30" bottom="30" /></padding>
+                <VBox styleClass="menu" alignment="TOP_CENTER" HBox.hgrow="NEVER">
+                    <padding><Insets /></padding>
                     <Button fx:id="regStdBtn" text="Register New Student" prefWidth="250" prefHeight="60"
                             minWidth="210" minHeight="40" VBox.vgrow="ALWAYS" onAction="#handleOnAction" />
                     <Button fx:id="beginSessionBtn" text="Begin New Session" prefWidth="250" prefHeight="60"
