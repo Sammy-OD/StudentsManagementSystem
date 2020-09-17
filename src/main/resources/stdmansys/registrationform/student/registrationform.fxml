@@ -22,7 +22,7 @@
             <VBox alignment="TOP_CENTER" HBox.hgrow="NEVER">
                 <padding><Insets top="10" right="10" left="10" /></padding>
                 <children>
-                    <ImageView fx:id="backIcon" fitHeight="50.0" fitWidth="50.0" smooth="true"
+                    <ImageView fx:id="backIcon" fitHeight="50.0" fitWidth="50.0"
                                preserveRatio="true" cache="true" onMouseClicked="#handleOnMouseClicked">
                         <image><Image url="@images/back_icon.png" /></image>
                     </ImageView>
