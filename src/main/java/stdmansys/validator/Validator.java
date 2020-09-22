@@ -8,6 +8,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import org.apache.commons.validator.GenericValidator;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,13 +31,17 @@ public class Validator<T> {
     }
 
     public void registerEmptyValidation(T control, String message) {
-        add(control);
+        if(!map1.containsKey(control)){
+            add(control);
+        }
         map2.put(control, message);
     }
 
     public void registerRegexValidation(T control, String message, String regex) {
         String merge = message + ",   " + regex;  // Merges message and regex separating with a comma and three white spaces.
-        add(control);
+        if(!map1.containsKey(control)){
+            add(control);
+        }
         map3.put(control, merge);
     }
 
@@ -48,30 +53,44 @@ public class Validator<T> {
             Object object = iterator.next();
             if(object instanceof TextField){
                 if(map2.containsKey(object) && ((TextField) object).getText().isEmpty()){
-                    map1.get(object).setText(map2.get(object));
-                    pane.getChildren().add(map1.get(object));
+                    if(!pane.getChildren().contains(map1.get(object))){
+                        map1.get(object).setText(map2.get(object));
+                        pane.getChildren().add(map1.get(object));
+                    }
                     labels.add(map1.get(object));
                 }else if(map3.containsKey(object)){
                     Pattern pattern = Pattern.compile(map3.get(object).split(",   ")[1]);
                     Matcher matcher = pattern.matcher(((TextField) object).getText());
                     if(!matcher.matches()){
-                        map1.get(object).setText(map3.get(object).split(",   ")[0]);
-                        pane.getChildren().add(map1.get(object));
+                        if(!pane.getChildren().contains(map1.get(object))){
+                            map1.get(object).setText(map3.get(object).split(",   ")[0]);
+                            pane.getChildren().add(map1.get(object));
+                        }
                         labels.add(map1.get(object));
                     }
                 }
             }else if(object instanceof DatePicker)
-                if (map2.containsKey(object) && ((DatePicker) object).getValue() == null) {
-                    map1.get(object).setText(map2.get(object));
-                    pane.getChildren().add(map1.get(object));
+                if (map2.containsKey(object) && ((DatePicker) object).getEditor().getText().isEmpty()){
+                    if(!pane.getChildren().contains(map1.get(object))){
+                        map1.get(object).setText(map2.get(object));
+                        pane.getChildren().add(map1.get(object));
+                    }
                     labels.add(map1.get(object));
                 }else if (map3.containsKey(object)) {
-                    if(((DatePicker) object).getValue() != null){
+                    if(!((DatePicker) object).getEditor().getText().isEmpty()){
                         Pattern pattern = Pattern.compile(map3.get(object).split(",   ")[1]);
-                        Matcher matcher = pattern.matcher(((DatePicker) object).getValue().toString());
-                        if (!matcher.matches()) {
-                            map1.get(object).setText(map3.get(object).split(",   ")[0]);
-                            pane.getChildren().add(map1.get(object));
+                        Matcher matcher = pattern.matcher(((DatePicker) object).getEditor().getText());
+                        if(!matcher.matches()) {
+                            if(!pane.getChildren().contains(map1.get(object))){
+                                map1.get(object).setText(map3.get(object).split(",   ")[0]);
+                                pane.getChildren().add(map1.get(object));
+                            }
+                            labels.add(map1.get(object));
+                        }else if(matcher.matches() && !GenericValidator.isDate(((DatePicker) object).getEditor().getText(), "dd-MM-yyyy", true)){
+                            if(!pane.getChildren().contains(map1.get(object))){
+                                map1.get(object).setText("Invalid Date");
+                                pane.getChildren().add(map1.get(object));
+                            }
                             labels.add(map1.get(object));
                         }
                     }

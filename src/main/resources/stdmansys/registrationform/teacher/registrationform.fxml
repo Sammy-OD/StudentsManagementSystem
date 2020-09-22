@@ -63,7 +63,7 @@
                             <Label text="Date Of Birth"
                                    GridPane.rowIndex="2" GridPane.columnIndex="2" />
                             <DatePicker fx:id="datePicker" prefWidth="200" prefHeight="35" minHeight="35"
-                                        GridPane.rowIndex="2" GridPane.columnIndex="3" />
+                                        GridPane.rowIndex="2" GridPane.columnIndex="3" promptText="dd-mm-yyyy" />
                             <Label text="Title"
                                    GridPane.rowIndex="3" GridPane.columnIndex="0" />
                             <HBox alignment="CENTER_LEFT" spacing="10" prefHeight="35"

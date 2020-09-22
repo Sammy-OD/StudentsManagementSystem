@@ -1,6 +1,8 @@
 package stdmansys.registrationform.teacher;
 
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import stdmansys.SessionProperty;
 import stdmansys.utils.DatabaseUtil;
 import java.sql.Connection;
@@ -42,6 +44,14 @@ public class RegistrationForm {
             preparedStatement.executeUpdate();
             return true;
         }catch (SQLException e){
+            Alert alert;
+            if(title != null){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(Integer.toString(e.getErrorCode()));
+            }else{
+                alert = new Alert(Alert.AlertType.NONE, "Title Not Selected", ButtonType.OK);
+            }
+            alert.showAndWait();
             return false;
         }finally {
             try{

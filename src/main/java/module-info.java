@@ -10,6 +10,7 @@ module stdmansys {
     requires slf4j.api;
     requires slf4j.nop;
     requires org.apache.commons.io;
+    requires commons.validator;
 
     opens stdmansys to javafx.fxml;
     exports stdmansys;

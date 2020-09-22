@@ -9,13 +9,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import org.w3c.dom.Document;
 import stdmansys.Loader;
 import stdmansys.SessionProperty;
 import stdmansys.camera.Camera;
 import stdmansys.utils.XMLUtil;
+import stdmansys.validator.Validator;
+
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.function.UnaryOperator;
 
 public class RegistrationFormController implements Initializable {
 
@@ -33,6 +39,7 @@ public class RegistrationFormController implements Initializable {
     @FXML
     private AnchorPane formNode;
     private RegistrationForm form;
+    private Validator<Control> validator;
 
     @FXML
     private void handleOnMouseClicked(MouseEvent evt) {
@@ -84,20 +91,24 @@ public class RegistrationFormController implements Initializable {
         }
 
         if(evt.getSource() == submitBtn){
-            getFormInputs();
-            if(form.submitForm()){
-                SessionProperty.setCurrentNumberOfTeachersRegisteredThisSession(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() + 1);
-                Document doc = XMLUtil.loadXML("state");
-                if (doc != null) {
-                    doc.getElementsByTagName("teacher").item(0).setTextContent(Integer.toString(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession()));
-                    XMLUtil.updateXML("state", doc);
+            if(validator.validate()){
+                getFormInputs();
+                if(form.submitForm()){
+                    SessionProperty.setCurrentNumberOfTeachersRegisteredThisSession(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() + 1);
+                    Document doc = XMLUtil.loadXML("state");
+                    if (doc != null) {
+                        doc.getElementsByTagName("teacher").item(0).setTextContent(Integer.toString(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession()));
+                        XMLUtil.updateXML("state", doc);
+                    }
+                    Stage stage = (Stage) submitBtn.getScene().getWindow();
+                    Parent root = Loader.load("registrationform/teacher/registrationform.fxml");
+                    stage.getScene().setRoot(root);
+                    stage.show();
+                    Alert alert = new Alert(Alert.AlertType.NONE, "Submit Successful", ButtonType.OK);
+                    alert.showAndWait();
+                }else{
+                    form = new RegistrationForm();
                 }
-                Stage stage = (Stage) submitBtn.getScene().getWindow();
-                Parent root = Loader.load("registrationform/teacher/registrationform.fxml");
-                stage.getScene().setRoot(root);
-                stage.show();
-            }else{
-                // Alert comes here.
             }
         }
     }
@@ -137,7 +148,38 @@ public class RegistrationFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        datePicker.setConverter(new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            @Override
+            public String toString(LocalDate localDate) {
+                if(localDate != null){
+                    return dateFormatter.format(localDate);
+                }else{
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String s) {
+                if(s != null && !s.isEmpty()){
+                    return LocalDate.parse(s, dateFormatter);
+                }else{
+                    return null;
+                }
+            }
+        });
         form = new RegistrationForm();
+        validator = new Validator<>(formNode, -70, 35);
+        validator.registerEmptyValidation(firstNameTxtFld, "Field Required");
+        validator.registerEmptyValidation(lastNameTxtFld, "Field Required");
+        validator.registerEmptyValidation(midNameTxtFld, "Field Required");
+        validator.registerEmptyValidation(datePicker, "Field Required");
+        validator.registerEmptyValidation(phnNumTxtFld, "Field Required");
+        validator.registerEmptyValidation(emailTxtFld, "Field Required");
+        validator.registerEmptyValidation(addressTxtFld, "Field Required");
+        validator.registerRegexValidation(datePicker, "Invalid Date Format", "[0-9]{2}-[0-9]{2}-[0-9]{4}");
+        validator.registerRegexValidation(phnNumTxtFld, "Invalid Phone Number", "^0([789][0]|[8][1])[0-9]{8}");
+        validator.registerRegexValidation(emailTxtFld, "Invalid Email Address", "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}");
     }
 
 }
