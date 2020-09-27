@@ -2,11 +2,10 @@ package stdmansys.validator;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
 import javafx.geometry.Point2D;
-import javafx.scene.control.Control;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import org.apache.commons.validator.GenericValidator;
 import java.util.*;
@@ -49,45 +48,45 @@ public class Validator<T> {
         List<Label> labels = new ArrayList<>();
         Set<T> controls = map1.keySet();
         Iterator<T> iterator = controls.iterator();
-        while(iterator.hasNext()){
+        while(iterator.hasNext()) {
             Object object = iterator.next();
-            if(object instanceof TextField){
-                if(map2.containsKey(object) && ((TextField) object).getText().isEmpty()){
-                    if(!pane.getChildren().contains(map1.get(object))){
+            if (object instanceof TextField) {
+                if (map2.containsKey(object) && ((TextField) object).getText().isEmpty()) {
+                    if(!pane.getChildren().contains(map1.get(object))) {
                         map1.get(object).setText(map2.get(object));
                         pane.getChildren().add(map1.get(object));
                     }
                     labels.add(map1.get(object));
-                }else if(map3.containsKey(object)){
+                }else if(map3.containsKey(object)) {
                     Pattern pattern = Pattern.compile(map3.get(object).split(",   ")[1]);
                     Matcher matcher = pattern.matcher(((TextField) object).getText());
-                    if(!matcher.matches()){
-                        if(!pane.getChildren().contains(map1.get(object))){
+                    if(!matcher.matches()) {
+                        if(!pane.getChildren().contains(map1.get(object))) {
                             map1.get(object).setText(map3.get(object).split(",   ")[0]);
                             pane.getChildren().add(map1.get(object));
                         }
                         labels.add(map1.get(object));
                     }
                 }
-            }else if(object instanceof DatePicker)
-                if (map2.containsKey(object) && ((DatePicker) object).getEditor().getText().isEmpty()){
-                    if(!pane.getChildren().contains(map1.get(object))){
+            }else if(object instanceof DatePicker){
+                if(map2.containsKey(object) && ((DatePicker) object).getEditor().getText().isEmpty()) {
+                    if(!pane.getChildren().contains(map1.get(object))) {
                         map1.get(object).setText(map2.get(object));
                         pane.getChildren().add(map1.get(object));
                     }
                     labels.add(map1.get(object));
-                }else if (map3.containsKey(object)) {
-                    if(!((DatePicker) object).getEditor().getText().isEmpty()){
+                }else if(map3.containsKey(object)) {
+                    if(!((DatePicker) object).getEditor().getText().isEmpty()) {
                         Pattern pattern = Pattern.compile(map3.get(object).split(",   ")[1]);
                         Matcher matcher = pattern.matcher(((DatePicker) object).getEditor().getText());
                         if(!matcher.matches()) {
-                            if(!pane.getChildren().contains(map1.get(object))){
+                            if(!pane.getChildren().contains(map1.get(object))) {
                                 map1.get(object).setText(map3.get(object).split(",   ")[0]);
                                 pane.getChildren().add(map1.get(object));
                             }
                             labels.add(map1.get(object));
-                        }else if(matcher.matches() && !GenericValidator.isDate(((DatePicker) object).getEditor().getText(), "dd-MM-yyyy", true)){
-                            if(!pane.getChildren().contains(map1.get(object))){
+                        }else if(matcher.matches() && !GenericValidator.isDate(((DatePicker) object).getEditor().getText(), "dd-MM-yyyy", true)) {
+                            if(!pane.getChildren().contains(map1.get(object))) {
                                 map1.get(object).setText("Invalid Date");
                                 pane.getChildren().add(map1.get(object));
                             }
@@ -95,6 +94,25 @@ public class Validator<T> {
                         }
                     }
                 }
+            }else if(object instanceof PasswordField){
+                if(map2.containsKey(object) && ((PasswordField) object).getText().isEmpty()) {
+                    if (!pane.getChildren().contains(map1.get(object))) {
+                        map1.get(object).setText(map2.get(object));
+                        pane.getChildren().add(map1.get(object));
+                    }
+                    labels.add(map1.get(object));
+                }else if(map3.containsKey(object)) {
+                    Pattern pattern = Pattern.compile(map3.get(object).split(",   ")[1]);
+                    Matcher matcher = pattern.matcher(((PasswordField) object).getText());
+                    if(!matcher.matches()) {
+                        if(!pane.getChildren().contains(map1.get(object))) {
+                            map1.get(object).setText(map3.get(object).split(",   ")[0]);
+                            pane.getChildren().add(map1.get(object));
+                        }
+                        labels.add(map1.get(object));
+                    }
+                }
+            }
         }
         if(labels.isEmpty()){
             return true;
@@ -112,7 +130,7 @@ public class Validator<T> {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean focusLost, Boolean focusGained) {
                 if(focusGained && pane.getChildren().contains(map1.get(control))) {
-                    pane.getChildren().remove(map1.get(control));
+                    remove(control);
                 }
             }
         });
@@ -131,6 +149,16 @@ public class Validator<T> {
             }
         });
         map1.put(control, label);
+    }
+
+    public void remove(T control) {
+        pane.getChildren().remove(map1.get(control));
+    }
+
+    public void removeAll(T... control) {
+        for(int i = 0; i < control.length; i++){
+            pane.getChildren().remove(control[i]);
+        }
     }
 
 }
