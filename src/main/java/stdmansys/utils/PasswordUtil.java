@@ -13,10 +13,10 @@ import java.security.cert.CertificateException;
 
 public class PasswordUtil {
 
-    public static byte[] encryptPassword(String unencryptedPassword, SecretKey secretKey, Cipher cipher){
+    public static byte[] encryptPassword(String unencryptedPassword, Cipher cipher){
         try{
             byte[] unencryptedPasswordBytes = unencryptedPassword.getBytes(StandardCharsets.UTF_8);
-            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            cipher.init(Cipher.ENCRYPT_MODE, getSecretKey());
             byte[] encryptedPassword = cipher.doFinal(unencryptedPasswordBytes);
             return encryptedPassword;
         }catch (Exception e){
@@ -25,9 +25,9 @@ public class PasswordUtil {
         }
     }
 
-    public static String decryptPassword(byte[] encryptedPassword, SecretKey secretKey, Cipher cipher){
+    public static String decryptPassword(byte[] encryptedPassword, Cipher cipher){
         try{
-            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            cipher.init(Cipher.DECRYPT_MODE, getSecretKey());
             byte[] decryptedPassword = cipher.doFinal(encryptedPassword);
             return new String(decryptedPassword);
         }catch (Exception e){
@@ -36,7 +36,7 @@ public class PasswordUtil {
         }
     }
 
-    public static SecretKey getSecretKey(){
+    private static SecretKey getSecretKey(){
         try{
             KeyStore keyStore = KeyStore.getInstance("PKCS12");
             keyStore.load(new FileInputStream("doc/sk.pfx"), "me.zky".toCharArray());

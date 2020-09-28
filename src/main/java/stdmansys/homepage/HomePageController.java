@@ -1,4 +1,4 @@
-package stdmansys.startpage;
+package stdmansys.homepage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,15 +9,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.w3c.dom.Document;
 import stdmansys.Loader;
 import stdmansys.UserProperty;
+import stdmansys.utils.XMLUtil;
+import javafx.scene.image.ImageView;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class StartPageController implements Initializable {
+public class HomePageController implements Initializable {
 
     @FXML
     private Button regStdBtn, beginSessionBtn, beginTermBtn, rsltUpBtn, viewGrdShtBtn, viewStdRepBtn, searchBtn;
@@ -29,6 +35,10 @@ public class StartPageController implements Initializable {
     private MenuItem logoutMenuItem, regNewTeacherMenuItem;
     @FXML
     private HBox userLabelHBox;
+    @FXML
+    private Text schoolName;
+    @FXML
+    private ImageView schlogo;
 
     @FXML
     private void handleOnMouseClick(MouseEvent evt) {
@@ -63,6 +73,18 @@ public class StartPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Document doc = XMLUtil.loadXML("app");
+        File logo = new File(doc.getElementsByTagName("logo").item(0).getTextContent());
+        File defaultLogo = new File("image/logo@.png");
+        Image image;
+        if(logo.exists()){
+            image = new Image(logo.toURI().toString());
+        }else{
+            image = new Image(defaultLogo.toURI().toString());
+        }
+        schlogo.setImage(image);
+        schoolName.setText(doc.getElementsByTagName("name").item(0).getTextContent());
+        // Sets userLabel text.
         if(!UserProperty.getIsAdmin()){
             userLabel.setText(UserProperty.getFirstName().substring(0,1)
                     + UserProperty.getLastName().substring(0,1));

@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="stdmansys.startpage.StartPageController" stylesheets="@startpage.css">
+      fx:controller="stdmansys.homepage.HomePageController" stylesheets="@homepage.css">
     <children>
         <HBox styleClass="header" alignment="CENTER_LEFT" VBox.vgrow="NEVER">
             <padding><Insets top="10" bottom="10" right="10" left="10" /></padding>
@@ -17,10 +17,8 @@
                 <HBox alignment="CENTER_LEFT" spacing="10">
                     <children>
                         <ImageView fx:id="schlogo" fitHeight="80.0" fitWidth="60.0" smooth="true"
-                                   preserveRatio="true" cache="true">
-                            <image><Image url="@images/school_logo.png" /></image>
-                        </ImageView>
-                        <Text text="My Demo School">
+                                   preserveRatio="true" cache="true" />
+                        <Text fx:id="schoolName">
                             <font>
                                 <Font name="Arial" size="30" />
                             </font>

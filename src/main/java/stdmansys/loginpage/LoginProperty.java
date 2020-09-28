@@ -54,7 +54,7 @@ public class LoginProperty {
     public static boolean verifyAdminLogin(String password) {
         try{
             Cipher cipher = Cipher.getInstance("AES");
-            if(PasswordUtil.decryptPassword(FileUtils.readFileToByteArray(new File("doc/admin.txt")), PasswordUtil.getSecretKey(), cipher).contentEquals(password)){
+            if(PasswordUtil.decryptPassword(FileUtils.readFileToByteArray(new File("doc/admin")), cipher).contentEquals(password)){
                 isLoginParametersCorrect = true;
             }
         }catch(NoSuchAlgorithmException e){

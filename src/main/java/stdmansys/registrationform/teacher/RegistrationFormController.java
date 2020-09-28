@@ -16,12 +16,10 @@ import stdmansys.SessionProperty;
 import stdmansys.camera.Camera;
 import stdmansys.utils.XMLUtil;
 import stdmansys.validator.Validator;
-
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.function.UnaryOperator;
 
 public class RegistrationFormController implements Initializable {
 
@@ -45,7 +43,7 @@ public class RegistrationFormController implements Initializable {
     private void handleOnMouseClicked(MouseEvent evt) {
         if(evt.getSource() == backIcon){
             Stage stage = (Stage) backIcon.getScene().getWindow();
-            Parent root = Loader.load("startpage/startpage.fxml");
+            Parent root = Loader.load("homepage/homepage.fxml");
             stage.getScene().setRoot(root);
             stage.show();
         }
@@ -104,7 +102,7 @@ public class RegistrationFormController implements Initializable {
                     Parent root = Loader.load("registrationform/teacher/registrationform.fxml");
                     stage.getScene().setRoot(root);
                     stage.show();
-                    Alert alert = new Alert(Alert.AlertType.NONE, "Submit Successful", ButtonType.OK);
+                    Alert alert = new Alert(Alert.AlertType.NONE, "Registration Successful", ButtonType.OK);
                     alert.showAndWait();
                 }else{
                     form = new RegistrationForm();

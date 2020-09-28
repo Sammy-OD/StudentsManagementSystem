@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.controlsfx.control.ToggleSwitch;
 import stdmansys.Loader;
+import stdmansys.SessionProperty;
 import stdmansys.UserProperty;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -43,8 +44,9 @@ public class LoginPageController implements Initializable {
                 if(LoginProperty.verifyAdminLogin(passwordTxtFld.getText())){
                     LoginProperty.setIsLoginParametersCorrect(false);
                     UserProperty.setIsAdmin(true);
+                    SessionProperty.setSessionProperties();
                     Stage stage = (Stage) loginBtn.getScene().getWindow();
-                    Parent root = Loader.load("startpage/startpage.fxml");
+                    Parent root = Loader.load("homepage/homepage.fxml");
                     stage.getScene().setRoot(root);
                     stage.show();
                 }
@@ -53,8 +55,9 @@ public class LoginPageController implements Initializable {
                     LoginProperty.setIsLoginParametersCorrect(false);
                     String teacherId = idTxtFld.getText();
                     UserProperty.setProperty(teacherId);
+                    SessionProperty.setSessionProperties();
                     Stage stage = (Stage) loginBtn.getScene().getWindow();
-                    Parent root = Loader.load("startpage/startpage.fxml");
+                    Parent root = Loader.load("homepage/homepage.fxml");
                     stage.getScene().setRoot(root);
                     stage.show();
                 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><app>
+	<school>
+		<name></name>
+		<logo></logo>
+		<state>
+			<session></session>
+			<term></term>
+			<teachers>0</teachers>
+			<students>0</students>
+		</state>
+	</school>
+	<admin>
+		<name></name>
+	</admin>
+</app>

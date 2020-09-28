@@ -33,7 +33,7 @@ public class RegistrationFormController implements Initializable {
     private void handleOnMouseClicked(MouseEvent evt) {
         if(evt.getSource() == backIcon){
             Stage stage = (Stage) backIcon.getScene().getWindow();
-            Parent root = Loader.load("startpage/startpage.fxml");
+            Parent root = Loader.load("homepage/homepage.fxml");
             stage.getScene().setRoot(root);
             stage.show();
         }

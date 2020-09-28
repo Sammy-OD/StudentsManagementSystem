@@ -9,11 +9,11 @@ public class SessionProperty {
     private static int currentNumberOfTeachersRegisteredThisSession, currentNumberOfStudentsRegisteredThisSession;
 
     public static void setSessionProperties(){
-        Document doc = XMLUtil.loadXML("state");
+        Document doc = XMLUtil.loadXML("app");
         if(doc != null){
             currentSession = doc.getElementsByTagName("session").item(0).getTextContent();
-            currentNumberOfTeachersRegisteredThisSession = Integer.parseInt(doc.getElementsByTagName("teacher").item(0).getTextContent());
-            currentNumberOfStudentsRegisteredThisSession = Integer.parseInt(doc.getElementsByTagName("student").item(0).getTextContent());
+            currentNumberOfTeachersRegisteredThisSession = Integer.parseInt(doc.getElementsByTagName("teachers").item(0).getTextContent());
+            currentNumberOfStudentsRegisteredThisSession = Integer.parseInt(doc.getElementsByTagName("students").item(0).getTextContent());
         }
     }
 
