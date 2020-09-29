@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import org.w3c.dom.Document;
 import stdmansys.Loader;
+import stdmansys.Path;
 import stdmansys.SessionProperty;
 import stdmansys.camera.Camera;
 import stdmansys.utils.XMLUtil;
@@ -43,7 +44,7 @@ public class RegistrationFormController implements Initializable {
     private void handleOnMouseClicked(MouseEvent evt) {
         if(evt.getSource() == backIcon){
             Stage stage = (Stage) backIcon.getScene().getWindow();
-            Parent root = Loader.load("homepage/homepage.fxml");
+            Parent root = Loader.load(Path.HOME_PAGE.getPath());
             stage.getScene().setRoot(root);
             stage.show();
         }
@@ -93,13 +94,13 @@ public class RegistrationFormController implements Initializable {
                 getFormInputs();
                 if(form.submitForm()){
                     SessionProperty.setCurrentNumberOfTeachersRegisteredThisSession(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() + 1);
-                    Document doc = XMLUtil.loadXML("state");
+                    Document doc = XMLUtil.loadXML(Path.APP_XML.getPath());
                     if (doc != null) {
-                        doc.getElementsByTagName("teacher").item(0).setTextContent(Integer.toString(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession()));
-                        XMLUtil.updateXML("state", doc);
+                        doc.getElementsByTagName("teachers").item(0).setTextContent(Integer.toString(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession()));
+                        XMLUtil.updateXML(Path.APP_XML.getPath(), doc);
                     }
                     Stage stage = (Stage) submitBtn.getScene().getWindow();
-                    Parent root = Loader.load("registrationform/teacher/registrationform.fxml");
+                    Parent root = Loader.load(Path.TEACHER_REG_FORM.getPath());
                     stage.getScene().setRoot(root);
                     stage.show();
                     Alert alert = new Alert(Alert.AlertType.NONE, "Registration Successful", ButtonType.OK);

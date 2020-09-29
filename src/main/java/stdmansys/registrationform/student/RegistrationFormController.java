@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import stdmansys.Loader;
+import stdmansys.Path;
 import stdmansys.camera.Camera;
 
 import java.net.URL;
@@ -33,7 +34,7 @@ public class RegistrationFormController implements Initializable {
     private void handleOnMouseClicked(MouseEvent evt) {
         if(evt.getSource() == backIcon){
             Stage stage = (Stage) backIcon.getScene().getWindow();
-            Parent root = Loader.load("homepage/homepage.fxml");
+            Parent root = Loader.load(Path.HOME_PAGE.getPath());
             stage.getScene().setRoot(root);
             stage.show();
         }

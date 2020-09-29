@@ -15,11 +15,11 @@ import java.io.IOException;
 
 public class XMLUtil {
 
-    public static Document loadXML(String fileName) {
+    public static Document loadXML(String path) {
         try{
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            return dBuilder.parse(new File("doc/"+ fileName + ".xml"));
+            return dBuilder.parse(new File(path));
         }catch(SAXException e){
             e.printStackTrace();
             return null;
@@ -33,12 +33,12 @@ public class XMLUtil {
 
     }
 
-    public static void updateXML(String fileName, Document doc) {
+    public static void updateXML(String path, Document doc) {
         try{
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("doc/" + fileName + ".xml"));
+            StreamResult result = new StreamResult(new File(path));
             transformer.transform(source, result);
         }catch (TransformerException e){
             e.printStackTrace();

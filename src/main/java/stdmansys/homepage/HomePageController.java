@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.w3c.dom.Document;
 import stdmansys.Loader;
+import stdmansys.Path;
 import stdmansys.UserProperty;
 import stdmansys.utils.XMLUtil;
 import javafx.scene.image.ImageView;
@@ -51,7 +52,7 @@ public class HomePageController implements Initializable {
     private void handleOnAction(ActionEvent evt) {
         if(evt.getSource() == regStdBtn){
             Stage stage = (Stage) regStdBtn.getScene().getWindow();
-            Parent root = Loader.load("registrationform/student/registrationform.fxml");
+            Parent root = Loader.load(Path.STUDENT_REG_FORM.getPath());
             stage.getScene().setRoot(root);
             stage.show();
         }
@@ -59,13 +60,13 @@ public class HomePageController implements Initializable {
         if(evt.getSource() == logoutMenuItem){
             UserProperty.setIsAdmin(false);
             Stage stage = (Stage) userLabelHBox.getScene().getWindow();
-            Parent root = Loader.load("loginpage/loginpage.fxml");
+            Parent root = Loader.load(Path.LOGIN_PAGE.getPath());
             stage.getScene().setRoot(root);
             stage.show();
         }
         if(evt.getSource() == regNewTeacherMenuItem){
             Stage stage = (Stage) userLabelHBox.getScene().getWindow();
-            Parent root = Loader.load("registrationform/teacher/registrationform.fxml");
+            Parent root = Loader.load(Path.TEACHER_REG_FORM.getPath());
             stage.getScene().setRoot(root);
             stage.show();
         }
@@ -73,7 +74,7 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Document doc = XMLUtil.loadXML("app");
+        Document doc = XMLUtil.loadXML(Path.APP_XML.getPath());
         File logo = new File(doc.getElementsByTagName("logo").item(0).getTextContent());
         File defaultLogo = new File("image/logo@.png");
         Image image;

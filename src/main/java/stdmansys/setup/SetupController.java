@@ -18,6 +18,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import stdmansys.Loader;
+import stdmansys.Path;
 import stdmansys.StudentsManagementSystemApp;
 import stdmansys.utils.PasswordUtil;
 import stdmansys.utils.XMLUtil;
@@ -129,7 +130,7 @@ public class SetupController implements Initializable {
             sessionValidator.registerEmptyValidation(sessionTxtFld, "Field Required");
             sessionValidator.registerRegexValidation(sessionTxtFld, "Invalid Input", "2[0-9]{3}/2[0-9]{3}");
             if(sessionValidator.validate() && termComboBox.getValue() != null){
-                Document doc = XMLUtil.loadXML("app");
+                Document doc = XMLUtil.loadXML(Path.APP_XML.getPath());
                 if(doc != null){
                     // Creates file admin to store admin password.
                     if(!passwordTxtFld.getText().isEmpty()){
@@ -187,7 +188,7 @@ public class SetupController implements Initializable {
                     state.item(3).setTextContent(termComboBox.getValue().toString());
                     NodeList admin = app.item(3).getChildNodes();
                     admin.item(1).setTextContent(adminNameTxtFld.getText());
-                    XMLUtil.updateXML("app", doc);
+                    XMLUtil.updateXML(Path.APP_XML.getPath(), doc);
 
                     ((Stage)(finishBtn.getScene().getWindow())).close();
 

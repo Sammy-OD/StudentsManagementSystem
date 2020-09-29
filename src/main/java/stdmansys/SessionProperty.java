@@ -9,7 +9,7 @@ public class SessionProperty {
     private static int currentNumberOfTeachersRegisteredThisSession, currentNumberOfStudentsRegisteredThisSession;
 
     public static void setSessionProperties(){
-        Document doc = XMLUtil.loadXML("app");
+        Document doc = XMLUtil.loadXML(Path.APP_XML.getPath());
         if(doc != null){
             currentSession = doc.getElementsByTagName("session").item(0).getTextContent();
             currentNumberOfTeachersRegisteredThisSession = Integer.parseInt(doc.getElementsByTagName("teachers").item(0).getTextContent());

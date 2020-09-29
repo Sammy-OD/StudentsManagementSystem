@@ -18,7 +18,7 @@ public class StudentsManagementSystemApp extends Application {
     public void start(Stage stage) {
         File file = new File("doc/admin");
         if(file.exists()){
-            Parent root = Loader.load("loginpage/loginpage.fxml");
+            Parent root = Loader.load(Path.LOGIN_PAGE.getPath());
             if(root != null){
                 stage.setScene(new Scene(root, WIDTH, HEIGHT));
             }
