@@ -18,7 +18,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import stdmansys.Loader;
-import stdmansys.Path;
+import stdmansys.constants.Path;
 import stdmansys.StudentsManagementSystemApp;
 import stdmansys.utils.PasswordUtil;
 import stdmansys.utils.XMLUtil;
@@ -62,7 +62,7 @@ public class SetupController implements Initializable {
         }
         if(evt.getSource() == nextBtn){
             if(adminBox.isVisible()){
-                adminValidator = new Validator<>(root, 0, 30);
+                adminValidator = new Validator<>(root, 45, 75);
                 adminValidator.registerEmptyValidation(adminNameTxtFld, "Field Required");
                 if(adminValidator.validate()){
                     if(passwordTxtFld.getText().isEmpty() && passwordTxtFld.getText().isEmpty()){
@@ -87,7 +87,7 @@ public class SetupController implements Initializable {
                     }
                 }
             }else if(schoolBox.isVisible()){
-                schlValidator = new Validator<>(root, 0, 30);
+                schlValidator = new Validator<>(root, 45, 75);
                 schlValidator.registerEmptyValidation(schlNameTxtFld, "Field Required");
                 if(schlValidator.validate()){
                     schoolBox.setVisible(false);
@@ -106,7 +106,7 @@ public class SetupController implements Initializable {
                 schoolBox.setVisible(false);
                 schoolBox.setManaged(false);
                 if(schlValidator != null){
-                    schlValidator.remove(schlNameTxtFld);
+                    schlValidator.removeLabel(schlNameTxtFld);
                 }
                 adminBox.setVisible(true);
                 adminBox.setManaged(true);
@@ -116,7 +116,7 @@ public class SetupController implements Initializable {
                 periodBox.setVisible(false);
                 periodBox.setManaged(false);
                 if(sessionValidator != null){
-                    sessionValidator.remove(sessionTxtFld);
+                    sessionValidator.removeLabel(sessionTxtFld);
                 }
                 schoolBox.setVisible(true);
                 schoolBox.setManaged(true);
@@ -126,10 +126,11 @@ public class SetupController implements Initializable {
             }
         }
         if(evt.getSource() == finishBtn){
-            sessionValidator = new Validator<>(root, 0, 30);
+            sessionValidator = new Validator<>(root, 45, 75);
             sessionValidator.registerEmptyValidation(sessionTxtFld, "Field Required");
+            sessionValidator.registerEmptyValidation(termComboBox, "Selection Required");
             sessionValidator.registerRegexValidation(sessionTxtFld, "Invalid Input", "2[0-9]{3}/2[0-9]{3}");
-            if(sessionValidator.validate() && termComboBox.getValue() != null){
+            if(sessionValidator.validate()){
                 Document doc = XMLUtil.loadXML(Path.APP_XML.getPath());
                 if(doc != null){
                     // Creates file admin to store admin password.
@@ -205,9 +206,6 @@ public class SetupController implements Initializable {
                     });
                     stage.show();
                 }
-            }else if(termComboBox.getValue() == null){
-                Alert alert = new Alert(Alert.AlertType.NONE, "Select Term", ButtonType.OK);
-                alert.showAndWait();
             }
         }
     }

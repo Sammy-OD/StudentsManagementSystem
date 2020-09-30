@@ -16,8 +16,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.w3c.dom.Document;
 import stdmansys.Loader;
-import stdmansys.Path;
-import stdmansys.UserProperty;
+import stdmansys.constants.Path;
+import stdmansys.property.UserProperty;
+import stdmansys.constants.XMLConstants;
 import stdmansys.utils.XMLUtil;
 import javafx.scene.image.ImageView;
 import java.io.File;
@@ -75,7 +76,7 @@ public class HomePageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Document doc = XMLUtil.loadXML(Path.APP_XML.getPath());
-        File logo = new File(doc.getElementsByTagName("logo").item(0).getTextContent());
+        File logo = new File(doc.getElementsByTagName(XMLConstants.SCHOOL_LOGO.getTag().getTagName()).item(XMLConstants.SCHOOL_LOGO.getTag().getIndex()).getTextContent());
         File defaultLogo = new File("image/logo@.png");
         Image image;
         if(logo.exists()){
@@ -84,7 +85,7 @@ public class HomePageController implements Initializable {
             image = new Image(defaultLogo.toURI().toString());
         }
         schlogo.setImage(image);
-        schoolName.setText(doc.getElementsByTagName("name").item(0).getTextContent());
+        schoolName.setText(doc.getElementsByTagName(XMLConstants.SCHOOL_NAME.getTag().getTagName()).item(XMLConstants.SCHOOL_NAME.getTag().getIndex()).getTextContent());
         // Sets userLabel text.
         if(!UserProperty.getIsAdmin()){
             userLabel.setText(UserProperty.getFirstName().substring(0,1)

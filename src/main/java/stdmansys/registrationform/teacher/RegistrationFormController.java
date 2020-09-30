@@ -10,12 +10,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import org.w3c.dom.Document;
 import stdmansys.Loader;
-import stdmansys.Path;
-import stdmansys.SessionProperty;
+import stdmansys.constants.Path;
+import stdmansys.constants.SessionConstants;
+import stdmansys.property.SessionProperty;
 import stdmansys.camera.Camera;
-import stdmansys.utils.XMLUtil;
 import stdmansys.validator.Validator;
 import java.net.URL;
 import java.time.LocalDate;
@@ -39,6 +38,7 @@ public class RegistrationFormController implements Initializable {
     private AnchorPane formNode;
     private RegistrationForm form;
     private Validator<Control> validator;
+    private List<String> check;
 
     @FXML
     private void handleOnMouseClicked(MouseEvent evt) {
@@ -91,28 +91,29 @@ public class RegistrationFormController implements Initializable {
 
         if(evt.getSource() == submitBtn){
             if(validator.validate()){
-                getFormInputs();
-                if(form.submitForm()){
-                    SessionProperty.setCurrentNumberOfTeachersRegisteredThisSession(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() + 1);
-                    Document doc = XMLUtil.loadXML(Path.APP_XML.getPath());
-                    if (doc != null) {
-                        doc.getElementsByTagName("teachers").item(0).setTextContent(Integer.toString(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession()));
-                        XMLUtil.updateXML(Path.APP_XML.getPath(), doc);
+                if(getFormInputs()){
+                    if(form.submitForm()){
+                        Camera.setImageName(null);
+                        SessionProperty.updateProperty(SessionConstants.NO_OF_TEACHERS.getKey(), Integer.toString(Integer.parseInt(SessionProperty.getProperty(SessionConstants.NO_OF_TEACHERS.getKey())) + 1));
+                        Stage stage = (Stage) submitBtn.getScene().getWindow();
+                        Parent root = Loader.load(Path.TEACHER_REG_FORM.getPath());
+                        stage.getScene().setRoot(root);
+                        stage.show();
+                        Alert alert = new Alert(Alert.AlertType.NONE, "Registration Successful", ButtonType.OK);
+                        alert.showAndWait();
+                    }else{
+                        form = new RegistrationForm();
                     }
-                    Stage stage = (Stage) submitBtn.getScene().getWindow();
-                    Parent root = Loader.load(Path.TEACHER_REG_FORM.getPath());
-                    stage.getScene().setRoot(root);
-                    stage.show();
-                    Alert alert = new Alert(Alert.AlertType.NONE, "Registration Successful", ButtonType.OK);
-                    alert.showAndWait();
                 }else{
-                    form = new RegistrationForm();
+                    Alert alert = new Alert(Alert.AlertType.NONE, check.get(0), ButtonType.OK);
+                    alert.showAndWait();
                 }
             }
         }
     }
 
-    private void getFormInputs(){
+    private boolean getFormInputs(){
+        check = new ArrayList<>();
         // Gets first name.
         if(!firstNameTxtFld.getText().isEmpty()) form.setFirstName(firstNameTxtFld.getText());
         // Gets last name.
@@ -140,9 +141,17 @@ public class RegistrationFormController implements Initializable {
             form.setTitle(mrsChkBox.getText());
         }else if(missChkBox.isSelected()){
             form.setTitle(missChkBox.getText());
+        }else{
+            check.add("Select Title");
         }
         // Gets image name.
         if(Camera.getImageName() != null) form.setImageName(Camera.getImageName());
+
+        if(check.isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     @Override
@@ -167,8 +176,10 @@ public class RegistrationFormController implements Initializable {
                 }
             }
         });
+
         form = new RegistrationForm();
-        validator = new Validator<>(formNode, -70, 35);
+        validator = new Validator<>(formNode, 0, 45);
+
         validator.registerEmptyValidation(firstNameTxtFld, "Field Required");
         validator.registerEmptyValidation(lastNameTxtFld, "Field Required");
         validator.registerEmptyValidation(midNameTxtFld, "Field Required");

@@ -12,7 +12,9 @@ public class CameraWindowAdapter extends WindowAdapter {
        Camera.getWebcam().close();
        if(Camera.getCameraCaller().contentEquals("stdmansys.registrationform.teacher.RegistrationFormController")){
            stdmansys.registrationform.teacher.RegistrationForm.getRootNode().setDisable(false);
-       }
+       }else if(Camera.getCameraCaller().contentEquals("stdmansys.registrationform.student.RegistrationFormController")){
+            stdmansys.registrationform.student.RegistrationForm.getRootNode().setDisable(false);
+        }
     }
 
 }

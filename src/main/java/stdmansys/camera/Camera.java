@@ -27,6 +27,8 @@ public class Camera {
     private static void initCamera() {
         if(Camera.getCameraCaller().contentEquals("stdmansys.registrationform.teacher.RegistrationFormController")){
             stdmansys.registrationform.teacher.RegistrationForm.getRootNode().setDisable(true);
+        }else if(Camera.getCameraCaller().contentEquals("stdmansys.registrationform.student.RegistrationFormController")){
+            stdmansys.registrationform.student.RegistrationForm.getRootNode().setDisable(true);
         }
 
         WebcamPanel webcamPanel = new WebcamPanel(webcam);

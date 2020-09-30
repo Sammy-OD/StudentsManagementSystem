@@ -34,10 +34,13 @@ public class CameraAction implements ActionListener {
                     + (int) (Math.random() * 10));
             try{
                 ImageIO.write(Camera.getCapturedImage(), "PNG", new File("image/" + Camera.getImageName() + ".png"));
+                Camera.setCapturedImage(null);
                 Camera.getWebcam().close();
                 Camera.getCameraFrame().dispose();
                 if(Camera.getCameraCaller().contentEquals("stdmansys.registrationform.teacher.RegistrationFormController")){
                     stdmansys.registrationform.teacher.RegistrationForm.getRootNode().setDisable(false);
+                }else if(Camera.getCameraCaller().contentEquals("stdmansys.registrationform.student.RegistrationFormController")){
+                    stdmansys.registrationform.student.RegistrationForm.getRootNode().setDisable(false);
                 }
             }catch (Exception e){
                 e.printStackTrace();

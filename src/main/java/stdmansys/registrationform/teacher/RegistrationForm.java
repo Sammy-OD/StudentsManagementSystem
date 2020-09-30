@@ -2,8 +2,8 @@ package stdmansys.registrationform.teacher;
 
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import stdmansys.SessionProperty;
+import stdmansys.constants.SessionConstants;
+import stdmansys.property.SessionProperty;
 import stdmansys.utils.DatabaseUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -44,13 +44,8 @@ public class RegistrationForm {
             preparedStatement.executeUpdate();
             return true;
         }catch (SQLException e){
-            Alert alert;
-            if(title != null){
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(Integer.toString(e.getErrorCode()));
-            }else{
-                alert = new Alert(Alert.AlertType.NONE, "Title Not Selected", ButtonType.OK);
-            }
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(Integer.toString(e.getErrorCode()));
             alert.showAndWait();
             return false;
         }finally {
@@ -66,17 +61,17 @@ public class RegistrationForm {
 
     private String generateTeacherId() {
         String teacherId;
-        if(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() < 10){
-            teacherId = "TCH" + SessionProperty.getCurrentSession().substring(0, 4)
-                            + "00" + (SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() + 1);
-        }else if(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() >= 10
-                    && SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() < 100){
-            teacherId = "TCH" + SessionProperty.getCurrentSession().substring(0, 4)
-                            + "0"+ (SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() + 1);
-        }else if(SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() >= 100
-                && SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() < 1000){
-            teacherId = "TCH" + SessionProperty.getCurrentSession().substring(0, 4)
-                            + (SessionProperty.getCurrentNumberOfTeachersRegisteredThisSession() + 1);
+        if(Integer.parseInt(SessionProperty.getProperty(SessionConstants.NO_OF_TEACHERS.getKey())) < 9){
+            teacherId = "TCH" + SessionProperty.getProperty(SessionConstants.CURRENT_SESSION.getKey()).substring(0, 4)
+                            + "00" + (Integer.parseInt(SessionProperty.getProperty(SessionConstants.NO_OF_TEACHERS.getKey())) + 1);
+        }else if(Integer.parseInt(SessionProperty.getProperty(SessionConstants.NO_OF_TEACHERS.getKey())) >= 9
+                    && Integer.parseInt(SessionProperty.getProperty(SessionConstants.NO_OF_TEACHERS.getKey())) < 99){
+            teacherId = "TCH" + SessionProperty.getProperty(SessionConstants.CURRENT_SESSION.getKey()).substring(0, 4)
+                            + "0"+ (Integer.parseInt(SessionProperty.getProperty(SessionConstants.NO_OF_TEACHERS.getKey())) + 1);
+        }else if(Integer.parseInt(SessionProperty.getProperty(SessionConstants.NO_OF_TEACHERS.getKey())) >= 99
+                && Integer.parseInt(SessionProperty.getProperty(SessionConstants.NO_OF_TEACHERS.getKey())) < 999){
+            teacherId = "TCH" + SessionProperty.getProperty(SessionConstants.CURRENT_SESSION.getKey()).substring(0, 4)
+                            + (Integer.parseInt(SessionProperty.getProperty(SessionConstants.NO_OF_TEACHERS.getKey())) + 1);
         }else{
             teacherId = null;
         }

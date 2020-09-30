@@ -1,4 +1,4 @@
-package stdmansys.loginpage;
+package stdmansys.property;
 
 import org.apache.commons.io.FileUtils;
 import stdmansys.utils.DatabaseUtil;

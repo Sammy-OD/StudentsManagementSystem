@@ -28,124 +28,127 @@
                     </ImageView>
                 </children>
             </VBox>
-            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                <GridPane alignment="CENTER" hgap="20" vgap="25">
-                    <padding><Insets left="20" right="80" /></padding>
-                    <columnConstraints>
-                        <ColumnConstraints prefWidth="160" minWidth="150" />
-                        <ColumnConstraints prefWidth="200" minWidth="150" />
-                        <ColumnConstraints prefWidth="160" minWidth="150" />
-                        <ColumnConstraints prefWidth="200" minWidth="150" />
-                    </columnConstraints>
-                    <children>
-                        <HBox alignment="CENTER" GridPane.rowIndex="0"
-                              GridPane.columnIndex="0" GridPane.columnSpan="4">
-                            <padding><Insets top="10" bottom="10" /></padding>
-                            <children>
-                                <Text text="Student Registration Form">
-                                    <font>
-                                        <Font name="Arial" size="30" />
-                                    </font>
-                                </Text>
-                            </children>
-                        </HBox>
-                        <Label text="First Name"
-                               GridPane.rowIndex="1" GridPane.columnIndex="0" />
-                        <TextField fx:id="firstNameTxtFld" prefHeight="35" minHeight="35"
-                                   GridPane.rowIndex="1" GridPane.columnIndex="1" />
-                        <Label text="Last Name"
-                               GridPane.rowIndex="1" GridPane.columnIndex="2" />
-                        <TextField fx:id="lastNameTxtFld" prefHeight="35" minHeight="35"
-                                   GridPane.rowIndex="1" GridPane.columnIndex="3" />
-                        <Label text="Middle Name"
-                               GridPane.rowIndex="2" GridPane.columnIndex="0" />
-                        <TextField fx:id="midNameTxtFld" prefHeight="35" minHeight="35"
-                                   GridPane.rowIndex="2" GridPane.columnIndex="1" />
-                        <Label text="Date Of Birth"
-                               GridPane.rowIndex="2" GridPane.columnIndex="2" />
-                        <DatePicker fx:id="datePicker" prefWidth="200" prefHeight="35" minHeight="35"
-                                    GridPane.rowIndex="2" GridPane.columnIndex="3" />
-                        <Label text="Gender"
-                               GridPane.rowIndex="3" GridPane.columnIndex="0" />
-                        <HBox alignment="CENTER_LEFT" spacing="10" prefHeight="35"
-                              GridPane.rowIndex="3" GridPane.columnIndex="1">
-                            <children>
-                                <CheckBox fx:id="maleChkBox" text="Male" onAction="#handleOnAction" />
-                                <CheckBox fx:id="femaleChkBox" text="Female" onAction="#handleOnAction" />
-                            </children>
-                        </HBox>
-                        <Label text="Class"
-                               GridPane.rowIndex="3" GridPane.columnIndex="2" />
-                        <ComboBox fx:id="classComboBox" promptText="Select Class" prefWidth="200" onAction="#handleOnAction"
-                                  minWidth="150" prefHeight="35" minHeight="35" GridPane.rowIndex="3" GridPane.columnIndex="3" />
-                        <Label fx:id="departmentLabel" text="Department"
-                               GridPane.rowIndex="4" GridPane.columnIndex="0" />
-                        <ComboBox fx:id="departmentComboBox" promptText="Select Department" prefWidth="200"
-                                  minWidth="150" prefHeight="35" minHeight="35" GridPane.rowIndex="4" GridPane.columnIndex="1" />
-                        <Label fx:id="subjectLabel" text="Subjects"
-                               GridPane.rowIndex="4" GridPane.columnIndex="2" />
-                        <CheckComboBox fx:id="subjectChkComboBox" prefWidth="200" minWidth="150" prefHeight="35"
-                                       minHeight="35" GridPane.rowIndex="4" GridPane.columnIndex="3" />
-                        <Label text="Religion"
-                               GridPane.rowIndex="5" GridPane.columnIndex="0" />
-                        <TextField fx:id="religionTxtFld" prefHeight="35" minHeight="35"
-                                   GridPane.rowIndex="5" GridPane.columnIndex="1" />
-                        <Label text="Nationality"
-                               GridPane.rowIndex="5" GridPane.columnIndex="2" />
-                        <TextField fx:id="nationTxtFld" prefHeight="35" minHeight="35"
-                                   GridPane.rowIndex="5" GridPane.columnIndex="3" />
-                        <Label text="Residential Address"
-                               GridPane.rowIndex="6" GridPane.columnIndex="0" />
-                        <TextField fx:id="addressTxtFld" GridPane.rowIndex="6" prefHeight="35" minHeight="35"
-                                   GridPane.columnIndex="1" GridPane.columnSpan="3" />
-                        <Label text="Previous School"
-                               GridPane.rowIndex="7" GridPane.columnIndex="0" />
-                        <TextField fx:id="preViousSchlTxtFld" GridPane.rowIndex="7" prefHeight="35" minHeight="35"
-                                   GridPane.columnIndex="1" GridPane.columnSpan="3" />
-                        <Label text="Father's Name"
-                               GridPane.rowIndex="8" GridPane.columnIndex="0" />
-                        <TextField fx:id="fatherNameTxtFld" prefHeight="35" minHeight="35"
-                                   GridPane.rowIndex="8" GridPane.columnIndex="1" />
-                        <Label text="Father's Occupation"
-                               GridPane.rowIndex="8" GridPane.columnIndex="2" />
-                        <TextField fx:id="fatherOccupationTxtFld" prefHeight="35" minHeight="35"
-                                   GridPane.rowIndex="8" GridPane.columnIndex="3" />
-                        <Label text="Mother's Name"
-                               GridPane.rowIndex="9" GridPane.columnIndex="0" />
-                        <TextField fx:id="motherNameTxtFld" prefHeight="35" minHeight="35"
-                                   GridPane.rowIndex="9" GridPane.columnIndex="1" />
-                        <Label text="Mother's Occupation"
-                               GridPane.rowIndex="9" GridPane.columnIndex="2" />
-                        <TextField fx:id="motherOccupationTxtFld" prefHeight="35" minHeight="35"
-                                   GridPane.rowIndex="9" GridPane.columnIndex="3" />
-                        <Label text="Father's Phone Number"
-                               GridPane.rowIndex="10" GridPane.columnIndex="0" />
-                        <TextField fx:id="fatherPhnNumTxtFld" prefHeight="35" minHeight="35"
-                                   GridPane.rowIndex="10" GridPane.columnIndex="1" />
-                        <Label text="Mother's Phone Number"
-                               GridPane.rowIndex="10" GridPane.columnIndex="2" />
-                        <TextField fx:id="motherPhnNumTxtFld" prefHeight="35" minHeight="35"
-                                   GridPane.rowIndex="10" GridPane.columnIndex="3" />
-                        <Label text="Father's email address"
-                               GridPane.rowIndex="11" GridPane.columnIndex="0" />
-                        <TextField fx:id="fatherEmailTxtFld" prefHeight="35" minHeight="35"
-                                   GridPane.rowIndex="11" GridPane.columnIndex="1" GridPane.columnSpan="3" />
-                        <Label text="Mother's email address"
-                               GridPane.rowIndex="12" GridPane.columnIndex="0" />
-                        <TextField fx:id="motherEmailTxtFld" prefHeight="35" minHeight="35"
-                                   GridPane.rowIndex="12" GridPane.columnIndex="1" GridPane.columnSpan="3" />
-                        <HBox alignment="CENTER_RIGHT" GridPane.rowIndex="13" spacing="15"
-                              GridPane.columnIndex="0" GridPane.columnSpan="4">
-                            <padding><Insets top="10" bottom="10" /></padding>
-                            <children>
-                                <Button fx:id="takePicBtn" text="Take Picture" prefWidth="100" prefHeight="40" minHeight="40"
-                                        onAction="#handleOnAction" />
-                                <Button fx:id="submitBtn" text="Submit" prefWidth="100" prefHeight="40" minHeight="40" />
-                            </children>
-                        </HBox>
-                    </children>
-                </GridPane>
-            </VBox>
+            <AnchorPane fx:id="formNode" HBox.hgrow="ALWAYS">
+                <children>
+                    <GridPane alignment="CENTER" hgap="20" vgap="25" AnchorPane.rightAnchor="70" AnchorPane.leftAnchor="0"
+                              AnchorPane.topAnchor="10" AnchorPane.bottomAnchor="10">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="160" minWidth="160" />
+                            <ColumnConstraints prefWidth="200" minWidth="200" />
+                            <ColumnConstraints prefWidth="160" minWidth="160" />
+                            <ColumnConstraints prefWidth="200" minWidth="200" />
+                        </columnConstraints>
+                        <children>
+                            <HBox alignment="CENTER" GridPane.rowIndex="0"
+                                  GridPane.columnIndex="0" GridPane.columnSpan="4">
+                                <padding><Insets top="10" bottom="10" /></padding>
+                                <children>
+                                    <Text text="Student Registration Form">
+                                        <font>
+                                            <Font name="Arial" size="30" />
+                                        </font>
+                                    </Text>
+                                </children>
+                            </HBox>
+                            <Label text="First Name"
+                                   GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                            <TextField fx:id="firstNameTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                            <Label text="Last Name"
+                                   GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                            <TextField fx:id="lastNameTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="1" GridPane.columnIndex="3" />
+                            <Label text="Middle Name"
+                                   GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                            <TextField fx:id="midNameTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                            <Label text="Date Of Birth"
+                                   GridPane.rowIndex="2" GridPane.columnIndex="2" />
+                            <DatePicker fx:id="datePicker" prefWidth="200" prefHeight="35" minHeight="35"
+                                        GridPane.rowIndex="2" GridPane.columnIndex="3" promptText="dd-mm-yyyy" />
+                            <Label text="Gender"
+                                   GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                            <HBox alignment="CENTER_LEFT" spacing="10" prefHeight="35"
+                                  GridPane.rowIndex="3" GridPane.columnIndex="1">
+                                <children>
+                                    <CheckBox fx:id="maleChkBox" text="Male" onAction="#handleOnAction" />
+                                    <CheckBox fx:id="femaleChkBox" text="Female" onAction="#handleOnAction" />
+                                </children>
+                            </HBox>
+                            <Label text="Class"
+                                   GridPane.rowIndex="3" GridPane.columnIndex="2" />
+                            <ComboBox fx:id="classComboBox" promptText="Select Class" prefWidth="200" onAction="#handleOnAction"
+                                      minWidth="150" prefHeight="35" minHeight="35" GridPane.rowIndex="3" GridPane.columnIndex="3" />
+                            <Label fx:id="departmentLabel" text="Department"
+                                   GridPane.rowIndex="4" GridPane.columnIndex="0" />
+                            <ComboBox fx:id="departmentComboBox" promptText="Select Department" prefWidth="200"
+                                      minWidth="150" prefHeight="35" minHeight="35" GridPane.rowIndex="4" GridPane.columnIndex="1" onAction="#handleOnAction" />
+                            <Label fx:id="subjectLabel" text="Subjects"
+                                   GridPane.rowIndex="4" GridPane.columnIndex="2" />
+                            <CheckComboBox fx:id="subjectChkComboBox" prefWidth="200" minWidth="150" prefHeight="35"
+                                           minHeight="35" GridPane.rowIndex="4" GridPane.columnIndex="3" />
+                            <Label text="Religion"
+                                   GridPane.rowIndex="5" GridPane.columnIndex="0" />
+                            <TextField fx:id="religionTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="5" GridPane.columnIndex="1" />
+                            <Label text="Nationality"
+                                   GridPane.rowIndex="5" GridPane.columnIndex="2" />
+                            <TextField fx:id="nationTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="5" GridPane.columnIndex="3" />
+                            <Label text="Residential Address"
+                                   GridPane.rowIndex="6" GridPane.columnIndex="0" />
+                            <TextField fx:id="addressTxtFld" GridPane.rowIndex="6" prefHeight="35" minHeight="35"
+                                       GridPane.columnIndex="1" GridPane.columnSpan="3" />
+                            <Label text="Previous School"
+                                   GridPane.rowIndex="7" GridPane.columnIndex="0" />
+                            <TextField fx:id="previousSchlTxtFld" GridPane.rowIndex="7" prefHeight="35" minHeight="35"
+                                       GridPane.columnIndex="1" GridPane.columnSpan="3" />
+                            <Label text="Father's Name"
+                                   GridPane.rowIndex="8" GridPane.columnIndex="0" />
+                            <TextField fx:id="fatherNameTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="8" GridPane.columnIndex="1" />
+                            <Label text="Father's Occupation"
+                                   GridPane.rowIndex="8" GridPane.columnIndex="2" />
+                            <TextField fx:id="fOccupationTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="8" GridPane.columnIndex="3" />
+                            <Label text="Mother's Name"
+                                   GridPane.rowIndex="9" GridPane.columnIndex="0" />
+                            <TextField fx:id="motherNameTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="9" GridPane.columnIndex="1" />
+                            <Label text="Mother's Occupation"
+                                   GridPane.rowIndex="9" GridPane.columnIndex="2" />
+                            <TextField fx:id="mOccupationTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="9" GridPane.columnIndex="3" />
+                            <Label text="Father's Phone Number"
+                                   GridPane.rowIndex="10" GridPane.columnIndex="0" />
+                            <TextField fx:id="fPhnTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="10" GridPane.columnIndex="1" />
+                            <Label text="Mother's Phone Number"
+                                   GridPane.rowIndex="10" GridPane.columnIndex="2" />
+                            <TextField fx:id="mPhnTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="10" GridPane.columnIndex="3" />
+                            <Label text="Father's email address"
+                                   GridPane.rowIndex="11" GridPane.columnIndex="0" />
+                            <TextField fx:id="fEmailTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="11" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+                            <Label text="Mother's email address"
+                                   GridPane.rowIndex="12" GridPane.columnIndex="0" />
+                            <TextField fx:id="mEmailTxtFld" prefHeight="35" minHeight="35"
+                                       GridPane.rowIndex="12" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+                            <HBox alignment="CENTER_RIGHT" GridPane.rowIndex="13" spacing="15"
+                                  GridPane.columnIndex="0" GridPane.columnSpan="4">
+                                <padding><Insets top="10" bottom="10" /></padding>
+                                <children>
+                                    <Button fx:id="takePicBtn" text="Take Picture" prefWidth="100" prefHeight="40" minHeight="40"
+                                            onAction="#handleOnAction" />
+                                    <Button fx:id="submitBtn" text="Submit" prefWidth="100" prefHeight="40" minHeight="40"
+                                            onAction="#handleOnAction" />
+                                </children>
+                            </HBox>
+                        </children>
+                    </GridPane>
+                </children>
+            </AnchorPane>
         </children>
     </HBox>
 </ScrollPane>

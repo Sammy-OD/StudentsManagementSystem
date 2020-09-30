@@ -1,4 +1,4 @@
-package stdmansys;
+package stdmansys.property;
 
 import stdmansys.utils.DatabaseUtil;
 import java.sql.*;

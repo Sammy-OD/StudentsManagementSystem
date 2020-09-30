@@ -10,9 +10,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.controlsfx.control.ToggleSwitch;
 import stdmansys.Loader;
-import stdmansys.Path;
-import stdmansys.SessionProperty;
-import stdmansys.UserProperty;
+import stdmansys.constants.Path;
+import stdmansys.property.LoginProperty;
+import stdmansys.property.SessionProperty;
+import stdmansys.property.UserProperty;
 import java.net.URL;
 import java.util.ResourceBundle;
 

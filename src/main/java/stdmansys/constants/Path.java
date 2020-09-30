@@ -1,4 +1,4 @@
-package stdmansys;
+package stdmansys.constants;
 
 public enum Path {
 

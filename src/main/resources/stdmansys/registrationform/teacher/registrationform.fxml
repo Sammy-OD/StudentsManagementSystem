@@ -20,7 +20,7 @@
             <VBox alignment="TOP_CENTER" HBox.hgrow="NEVER">
                 <padding><Insets top="10" right="10" left="10" /></padding>
                 <children>
-                    <ImageView fx:id="backIcon" fitHeight="50.0" fitWidth="50.0" smooth="true"
+                    <ImageView fx:id="backIcon" fitHeight="50.0" fitWidth="50.0"
                                preserveRatio="true" cache="true" onMouseClicked="#handleOnMouseClicked">
                         <image><Image url="@images/back_icon.png" /></image>
                     </ImageView>
@@ -31,10 +31,10 @@
                     <GridPane alignment="CENTER" hgap="20" vgap="25" AnchorPane.rightAnchor="70" AnchorPane.leftAnchor="0"
                               AnchorPane.topAnchor="10" AnchorPane.bottomAnchor="10">
                         <columnConstraints>
-                            <ColumnConstraints prefWidth="160" minWidth="180" />
-                            <ColumnConstraints prefWidth="200" minWidth="180" />
-                            <ColumnConstraints prefWidth="160" minWidth="180" />
-                            <ColumnConstraints prefWidth="200" minWidth="180" />
+                            <ColumnConstraints prefWidth="160" minWidth="160" />
+                            <ColumnConstraints prefWidth="200" minWidth="200" />
+                            <ColumnConstraints prefWidth="160" minWidth="160" />
+                            <ColumnConstraints prefWidth="200" minWidth="200" />
                         </columnConstraints>
                         <children>
                             <HBox alignment="CENTER" GridPane.rowIndex="0"
