@@ -1,2 +1,9 @@
 /target
+/app.log
+/app.log.lck
 /doc/admin
+/doc/keystore.pfx
+/database/student.enc
+/database/teacher.enc
+/drive/credentials.json
+/drive/StoredCredential

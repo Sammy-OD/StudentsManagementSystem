@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.RadioButton?>
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zkysms.ui.setup.SetupController">
+    <children>
+        <VBox alignment="CENTER" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="45" AnchorPane.rightAnchor="45" AnchorPane.topAnchor="10">
+            <children>
+                <VBox fx:id="adminBox" alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
+                    <children>
+                        <HBox alignment="CENTER_LEFT">
+                            <padding><Insets bottom="5" top="5" /></padding>
+                            <children>
+                                <Text text="Admin">
+                                    <font>
+                                        <Font name="Arial" size="24" />
+                                    </font>
+                                </Text>
+                            </children>
+                        </HBox>
+                        <GridPane alignment="TOP_CENTER" hgap="10" vgap="25" VBox.vgrow="ALWAYS">
+                            <padding><Insets bottom="10" top="10" /></padding>
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="130" prefWidth="130" />
+                                <ColumnConstraints minWidth="285" prefWidth="285" />
+                            </columnConstraints>
+                            <children>
+                                <Label text="Email" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <TextField fx:id="adminEmailTxtFld" minHeight="30" prefHeight="30" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="Password" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <PasswordField fx:id="passwordTxtFld" minHeight="30" prefHeight="30" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Label text="Confirm Password" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                <PasswordField fx:id="cPasswordTxtFld" minHeight="30" prefHeight="30" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            </children>
+                        </GridPane>
+                    </children>
+                </VBox>
+                <VBox fx:id="schoolBox" alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
+                    <children>
+                        <HBox alignment="CENTER_LEFT">
+                            <padding><Insets bottom="5" top="5" /></padding>
+                            <children>
+                                <Text text="School">
+                                    <font>
+                                        <Font name="Arial" size="24" />
+                                    </font>
+                                </Text>
+                            </children>
+                        </HBox>
+                        <GridPane alignment="TOP_CENTER" hgap="10" vgap="25" VBox.vgrow="ALWAYS">
+                            <padding><Insets bottom="10" top="10" /></padding>
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="130" prefWidth="130" />
+                                <ColumnConstraints minWidth="285" prefWidth="285" />
+                            </columnConstraints>
+                            <children>
+                                <Label text="Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <TextField fx:id="schlNameTxtFld" minHeight="30" prefHeight="30" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="Logo" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <HBox alignment="CENTER" spacing="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <children>
+                                        <TextField fx:id="logoTxtFld" minHeight="30" prefHeight="30" HBox.hgrow="ALWAYS" />
+                                        <Button fx:id="browseBtn" minHeight="30" prefHeight="30" text="Browse" onAction="#handleOnAction" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </GridPane>
+                    </children>
+                </VBox>
+                <VBox fx:id="periodBox" alignment="CENTER" VBox.vgrow="ALWAYS">
+                    <children>
+                        <HBox alignment="CENTER_LEFT">
+                            <padding><Insets bottom="5" top="5" /></padding>
+                            <children>
+                                <Text text="Academic Period">
+                                    <font>
+                                        <Font name="Arial" size="24" />
+                                    </font>
+                                </Text>
+                            </children>
+                        </HBox>
+                        <GridPane alignment="TOP_CENTER" hgap="10" vgap="25" VBox.vgrow="ALWAYS">
+                            <padding><Insets bottom="10" top="10" /></padding>
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="130" prefWidth="130" />
+                                <ColumnConstraints minWidth="285" prefWidth="285" />
+                            </columnConstraints>
+                            <children>
+                                <Label text="Session" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <TextField fx:id="sessionTxtFld" minHeight="30" prefHeight="30" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="Term" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <ComboBox fx:id="termComboBox" minWidth="285" prefWidth="285" minHeight="30" prefHeight="30" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            </children>
+                        </GridPane>
+                    </children>
+                </VBox>
+                <HBox alignment="BOTTOM_RIGHT" prefHeight="50" prefWidth="200" spacing="10" VBox.vgrow="NEVER">
+                    <children>
+                        <Button fx:id="backBtn" disable="true" minHeight="30" minWidth="80" onAction="#handleOnAction" prefHeight="30.0" prefWidth="80.0" text="Back" />
+                        <Button fx:id="nextBtn" minHeight="30" minWidth="80" onAction="#handleOnAction" prefHeight="30.0" prefWidth="80.0" text="Next" />
+                        <Button fx:id="finishBtn" disable="true" minHeight="30" minWidth="80" onAction="#handleOnAction" prefHeight="30.0" prefWidth="80.0" text="Finish" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
