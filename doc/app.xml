@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><app>
 	<school>
-		<name></name>
-		<logo></logo>
+		<name>Z.Co International</name>
+		<logo/>
 		<state>
-			<session></session>
-			<term></term>
-			<teachers>0</teachers>
+			<session>2020/2021</session>
+			<term>1</term>
+			<teachers>4</teachers>
 			<students>
 				<p1>0</p1>
 				<p2>0</p2>
@@ -23,7 +23,7 @@
 		</state>
 	</school>
 	<admin>
-		<email></email>
+		<email>odunlamizacchaeus548@gmail.com</email>
 	</admin>
 	<subjects>
 		<primary>Pre-vocational Studies, Cultural and Creative Arts</primary>

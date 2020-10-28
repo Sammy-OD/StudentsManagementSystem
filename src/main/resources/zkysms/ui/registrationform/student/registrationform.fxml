@@ -15,7 +15,8 @@
 <?import org.controlsfx.control.CheckComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <AnchorPane  xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-             fx:controller="zkysms.ui.registrationform.student.RegistrationFormController" fx:id="root">
+             fx:controller="zkysms.ui.registrationform.student.RegistrationFormController"
+             stylesheets="@studregistrationform.css" fx:id="root">
     <ScrollPane fx:id="scrollPane" fitToWidth="true" fitToHeight="true"
                 AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0">
         <HBox>
@@ -31,7 +32,7 @@
                 </VBox>
                 <AnchorPane fx:id="formNode" HBox.hgrow="ALWAYS">
                     <children>
-                        <GridPane alignment="CENTER" hgap="20" vgap="25" AnchorPane.rightAnchor="70" AnchorPane.leftAnchor="0"
+                        <GridPane styleClass="container" alignment="CENTER" hgap="20" vgap="25" AnchorPane.rightAnchor="70" AnchorPane.leftAnchor="0"
                                   AnchorPane.topAnchor="10" AnchorPane.bottomAnchor="10">
                             <columnConstraints>
                                 <ColumnConstraints prefWidth="160" minWidth="160" />
@@ -140,9 +141,9 @@
                                       GridPane.columnIndex="0" GridPane.columnSpan="4">
                                     <padding><Insets top="10" bottom="10" /></padding>
                                     <children>
-                                        <Button fx:id="takePicBtn" text="Take Picture" prefWidth="100" prefHeight="40" minHeight="40"
+                                        <Button styleClass="btn" fx:id="takePicBtn" text="Take Picture" prefWidth="100" prefHeight="40" minHeight="40"
                                                 onAction="#handleOnAction" />
-                                        <Button fx:id="submitBtn" text="Submit" prefWidth="100" prefHeight="40" minHeight="40"
+                                        <Button styleClass="btn" fx:id="submitBtn" text="Submit" prefWidth="100" prefHeight="40" minHeight="40"
                                                 onAction="#handleOnAction" />
                                     </children>
                                 </HBox>
