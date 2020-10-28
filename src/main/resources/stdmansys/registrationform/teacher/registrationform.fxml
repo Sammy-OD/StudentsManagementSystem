@@ -14,7 +14,7 @@
 <?import javafx.scene.control.DatePicker?>
 <ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
             fx:controller="stdmansys.registrationform.teacher.RegistrationFormController"
-            fitToWidth="true" fitToHeight="true">
+            fitToWidth="true" fitToHeight="true" stylesheets="@t_registrationform.css" fx:id="tRoot">
     <HBox>
         <children>
             <VBox alignment="TOP_CENTER" HBox.hgrow="NEVER">
@@ -28,7 +28,7 @@
             </VBox>
             <AnchorPane fx:id="formNode" HBox.hgrow="ALWAYS">
                 <children>
-                    <GridPane alignment="CENTER" hgap="20" vgap="25" AnchorPane.rightAnchor="70" AnchorPane.leftAnchor="0"
+                    <GridPane styleClass="container" alignment="CENTER" hgap="20" vgap="25" AnchorPane.rightAnchor="70" AnchorPane.leftAnchor="0"
                               AnchorPane.topAnchor="10" AnchorPane.bottomAnchor="10">
                         <columnConstraints>
                             <ColumnConstraints prefWidth="160" minWidth="160" />
@@ -98,9 +98,9 @@
                                   GridPane.columnIndex="0" GridPane.columnSpan="4">
                                 <padding><Insets top="10" bottom="10" /></padding>
                                 <children>
-                                    <Button fx:id="takePicBtn" text="Take Picture" prefWidth="100" prefHeight="40"
+                                    <Button styleClass="btn" fx:id="takePicBtn" text="Take Picture" prefWidth="100" prefHeight="40"
                                             minHeight="40" onAction="#handleOnAction" />
-                                    <Button fx:id="submitBtn" text="Submit" prefWidth="100" prefHeight="40"
+                                    <Button styleClass="btn" fx:id="submitBtn" text="Submit" prefWidth="100" prefHeight="40"
                                             minHeight="40" onAction="#handleOnAction" />
                                 </children>
                             </HBox>

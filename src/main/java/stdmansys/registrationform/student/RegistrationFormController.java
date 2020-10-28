@@ -7,9 +7,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import org.controlsfx.control.CheckComboBox;
@@ -22,6 +23,10 @@ import stdmansys.constants.SessionConstants;
 import stdmansys.property.SessionProperty;
 import stdmansys.utils.XMLUtil;
 import stdmansys.validator.Validator;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -51,6 +56,8 @@ public class RegistrationFormController implements Initializable {
     private RegistrationForm form;
     private Validator<Control> validator;
     private List<String> check;
+    @FXML
+    private ScrollPane studRoot;
 
     @FXML
     private void handleOnMouseClicked(MouseEvent evt) {
@@ -268,6 +275,10 @@ public class RegistrationFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        File file = new File("image/logo.jpg");
+        Image img = new Image(file.toURI().toString());
+        BackgroundImage bg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(50,50,true,true,true, false));
+        studRoot.setBackground(new Background(bg));
         // Initializes class combo box.
         String[] $class = {"Primary 1", "Primary 2", "Primary 3", "Primary 4", "Primary 5", "Primary 6",
                                 "JS 1", "JS 2", "JS 3", "SS 1", "SS 2", "SS 3"};

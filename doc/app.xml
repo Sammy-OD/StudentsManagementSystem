@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><app>
 	<school>
-		<name></name>
-		<logo></logo>
+		<name>scs</name>
+		<logo>image\logo.jpg</logo>
 		<state>
-			<session></session>
-			<term></term>
+			<session>2019/2020</session>
+			<term>1</term>
 			<teachers>0</teachers>
 			<students>
 				<p1>0</p1>
@@ -23,7 +23,7 @@
 		</state>
 	</school>
 	<admin>
-		<name></name>
+		<name>Admin</name>
 	</admin>
 	<subjects>
 		<primary>Pre-vocational Studies, Cultural and Creative Arts</primary>

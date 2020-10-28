@@ -5,9 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import stdmansys.Loader;
@@ -16,6 +17,8 @@ import stdmansys.constants.SessionConstants;
 import stdmansys.property.SessionProperty;
 import stdmansys.camera.Camera;
 import stdmansys.validator.Validator;
+
+import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -39,6 +42,8 @@ public class RegistrationFormController implements Initializable {
     private RegistrationForm form;
     private Validator<Control> validator;
     private List<String> check;
+    @FXML
+    private  ScrollPane tRoot;
 
     @FXML
     private void handleOnMouseClicked(MouseEvent evt) {
@@ -156,6 +161,11 @@ public class RegistrationFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        File file = new File("image/logo.jpg");
+        Image img = new Image(file.toURI().toString());
+        BackgroundImage bg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(50,50,true,true,true, false));
+        tRoot.setBackground(new Background(bg));
+
         datePicker.setConverter(new StringConverter<LocalDate>() {
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             @Override

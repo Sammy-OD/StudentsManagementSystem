@@ -1,0 +1,42 @@
+.container TextField{
+    -fx-focus-color: #228B22;
+    -fx-faint-focus-color: #228B2222;
+}
+
+.btn{
+    -fx-background-color: #228B22;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, grey, 15, 0.2, 1, 2);
+}
+
+.btn:hover{
+    -fx-background-color: #006400;
+    -fx-cursor: hand;
+}
+.scroll-pane > .viewport{
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+}
+
+.check-box .box{
+    -fx-focus-color: #228B22;
+    -fx-faint-focus-color: #228B2222;
+}
+
+.check-box:selected .box{
+    -fx-background-color: #228B22;
+}
+
+.check-box:selected .mark{
+    -fx-background-color: white;
+}
+
+.date-picker{
+    -fx-focus-color: #228B22;
+    -fx-faint-focus-color: #228B2222;
+}
+
+.date-picker-popup > * > .day-cell:hover,
+.date-picker-popup > * > .selected{
+    -fx-background-color: #228B22;
+}

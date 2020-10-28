@@ -32,7 +32,12 @@
 }
 
 #userLabel{
-    -fx-background-color: yellow;
+    -fx-background-color: #006400;
     -fx-border-radius: 50%;
     -fx-background-radius: 50%;
+    -fx-text-fill: white;
+}
+
+.context-menu .menu-item:focused{
+    -fx-background-color: #228B22;
 }
