@@ -4,8 +4,6 @@ import com.google.api.services.drive.Drive;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import zkysms.ui.LoadingScreen;

@@ -230,7 +230,7 @@ public class RegistrationFormController implements Initializable {
         File file = new File("image/logo.jpg");
         Image img = new Image(file.toURI().toString());
         BackgroundImage bg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(50,50,true,true,true, false));
-        root.setBackground(new Background(bg));
+        scrollPane.setBackground(new Background(bg));
         datePicker.setConverter(new StringConverter<LocalDate>() {
             final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             @Override

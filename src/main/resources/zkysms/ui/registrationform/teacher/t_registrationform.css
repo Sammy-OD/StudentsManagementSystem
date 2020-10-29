@@ -1,3 +1,7 @@
+.scroll-pane > .viewport{
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+}
+
 .container TextField{
     -fx-focus-color: #228B22;
     -fx-faint-focus-color: #228B2222;

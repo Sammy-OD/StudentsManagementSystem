@@ -5,8 +5,6 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.w3c.dom.Document;
@@ -41,12 +39,6 @@ public class RegistrationForm {
         if(service != null){
             DriveUtil.manageConcurrency(service);
             if(DriveUtil.hasAccess()){
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        loadingScreen.setMessage("Processing");
-                    }
-                });
                 DriveUtil.setAccess(false);
                 File file = new File(Constants.LOCAL_DATABASE_FOLDER.getValue() + "/student.enc");
                 // Stores database file in retained folder.

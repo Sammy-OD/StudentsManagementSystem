@@ -327,7 +327,7 @@ public class RegistrationFormController implements Initializable {
         File file = new File("image/logo.jpg");
         Image img = new Image(file.toURI().toString());
         BackgroundImage bg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(50,50,true,true,true, false));
-        root.setBackground(new Background(bg));
+        scrollPane.setBackground(new Background(bg));
         // Initializes class combo box.
         String[] $class = {"Primary 1", "Primary 2", "Primary 3", "Primary 4", "Primary 5", "Primary 6",
                                 "JS 1", "JS 2", "JS 3", "SS 1", "SS 2", "SS 3"};
